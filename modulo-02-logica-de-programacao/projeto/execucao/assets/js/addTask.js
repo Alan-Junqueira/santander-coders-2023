@@ -21,6 +21,7 @@ export const addTask = (title, description, expectedConclusion) => {
         }
 
         tasks.push(task);
+        return task;
     } catch (error) {
         console.log(error.message);
     }
