@@ -18,7 +18,6 @@ export class Mob extends Entity {
     if (Map.isPositionValid({ x: xActualPosition, y: yActualPosition })) {
       this.xActualPosition = xActualPosition;
       this.yActualPosition = yActualPosition;
-      Map.addEntityToMappedEntities({ x: xActualPosition, y: yActualPosition });
     }
   }
 
@@ -29,6 +28,8 @@ export class Mob extends Entity {
     this.#maxAttack = this.setMaxAttack();
     this.#minDefense = this.setMinDefense();
     this.#maxDefense = this.setMaxDefense();
+
+    Map.addEntityToMappedEntities(this)
   }
 
   get health() {

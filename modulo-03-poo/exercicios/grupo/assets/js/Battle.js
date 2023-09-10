@@ -52,7 +52,7 @@ export class Battle {
          * - porcentagem da vida atual em relação a vida máxima do jogo + poder (ataque/defesa) + adicional (ataque/defesa)
          * Dano do Ataque: poder de ataque - poder de defesa (recebe acréscimos ou decréscimos de acordo ao nível de dificuldade)
          * Vencedor: Será preenchido com o nome do jogador sobrevivente ou do combatente inimigo do jogador desistente
-         * O Desistente receberá uma das punições : - 10% maxLife - 15% poder ataque ou - 10 % poder defesa 
+         * O Desistente receberá uma das punições : - 10% maxLife - 15% poder ataque ou - 10 % poder defesa
          */
 
         const attackSuccess = this.hitAttack(attacker.porcentagemAcertoAtaque);

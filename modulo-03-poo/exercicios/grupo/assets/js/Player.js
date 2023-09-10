@@ -55,12 +55,14 @@ export class Player extends Entity {
 
       this.name = name
       this.character = character
-      this.yActualPosition = 15
+      this.yActualPosition = 0
       this.xActualPosition = 22
 
       Map.difficult = difficult
       Map.resetMappedEntities()
       Map.addEntityToMappedEntities(this)
+
+      console.log(Map.difficult)
 
       this.render()
     })
