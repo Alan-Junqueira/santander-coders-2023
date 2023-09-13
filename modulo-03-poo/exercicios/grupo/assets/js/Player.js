@@ -70,7 +70,6 @@ export class Player extends Entity {
       while (!resultInteract.isBattleEnded) {
         resultInteract = this.battleInteraction(entitiesToInteract, battle, { ...resultInteract });
       }
-      console.log("mob");
     }
 
     // if (entitiesToInteract[1] instanceof Boss) {
@@ -89,18 +88,22 @@ export class Player extends Entity {
   }
 
   battleInteraction(entitiesToInteract, battle, attack) {
-    console.log(attack);
+    console.log(entitiesToInteract)
+
     if (attack.isPlayerTurn) {
       const proceed = confirm('Seguir na batalha?');
       attack = "";
       proceed ? attack = battle.move(entitiesToInteract[0], entitiesToInteract[1], true) :
         attack = battle.move(entitiesToInteract[0], entitiesToInteract[1], false);
-      console.log(attack);
+
     } else if (!attack.isBattleEnded) {
       attack = "";
       attack = battle.move(entitiesToInteract[1], entitiesToInteract[0], true);
       console.log(attack);
     }
+
+    console.log(attack)
+
     return attack;
   }
 

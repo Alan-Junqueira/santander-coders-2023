@@ -1,5 +1,6 @@
 import { Action } from "./Action.js";
 import { Map } from "./Map.js";
+import { Mob } from "./Mob.js";
 import { Player } from "./Player.js";
 
 export class Battle {
@@ -172,12 +173,16 @@ export class Battle {
 
     //Calcula o poder de ataque e defesa dos jogadores
     const attackPowerAttacker =
-      ((attacker.actualLife / attacker.maxLife) * 100 +
+      (((attacker.actualLife ?? attacker.actualHealth) /
+        (attacker.maxLife ?? attacker.maxHealth)) *
+        100 +
         attacker.attack +
         Map.difficult.extraAttack) /
       3;
     const defensePowerDefensor =
-      ((defensor.actualLife / defensor.maxLife) * 100 +
+      (((defensor.actualLife ?? defensor.actualHealth) /
+        (defensor.maxLife ?? defensor.maxHealth)) *
+        100 +
         defensor.defense +
         Map.difficult.extraDefense) /
       3;
@@ -210,16 +215,29 @@ export class Battle {
     }
 
     defensor = this.attackResult(this.damageHit, defensor);
+    console.log(defensor);
     Map.updateEntity(defensor);
 
-    if (defensor.actualLife <= 0) {
+    if ((defensor.actualLife ?? defensor.actualHealth) <= 0) {
       result.msg = this.battleEnded(attacker);
       result.keep = false;
       result.isBattleEnded = true;
       return result;
     }
 
-    result.msg = `Sucesso! Dano aplicado no jogador ${defensor.name} : ${this.damageHit}`;
+    result.msg = `Sucesso! Dano aplicado no jogador ${
+      defensor.name
+    } : ${Math.ceil(this.damageHit)}`;
+
+    console.log("defensor", defensor);
+    console.log("attacker", attacker);
+    if (attacker instanceof Player) {
+      attacker.reRenderStats();
+    }
+
+    if (defensor instanceof Player) {
+      defensor.reRenderStats();
+    }
 
     return result;
   }
@@ -230,8 +248,15 @@ export class Battle {
 
   //Aplica dano do ataque no defensor
   attackResult(damage, defensor) {
-    console.log(defensor.actualLife - damage);
-    defensor.actualLife - damage;
+    console.log(defensor);
+    if (defensor instanceof Player) {
+      defensor.actualLife = defensor.actualLife - Math.ceil(damage);
+    }
+
+    if (defensor instanceof Mob) {
+      defensor.actualHealth = defensor.actualHealth - Math.ceil(damage);
+    }
+    console.log(defensor);
     return defensor;
   }
 

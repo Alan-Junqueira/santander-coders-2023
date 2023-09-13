@@ -167,7 +167,7 @@ export class Mob extends Entity {
   }
 
   setMaxHealth() {
-    return Math.floor(Math.random() * 5 + 5);
+    return Math.floor(Math.random() * 30 + 10);
   }
 
   setMinAttack() {
