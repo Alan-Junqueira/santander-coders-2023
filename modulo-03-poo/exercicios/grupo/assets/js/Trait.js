@@ -85,7 +85,6 @@ export class Trait {
     apply(character) {
         if (character instanceof Player) {
             this.#applyOnPlayer(character);
-            return;
         }
         if (character instanceof Mob || character instanceof Boss) {
             this.#applyOnMob(character)

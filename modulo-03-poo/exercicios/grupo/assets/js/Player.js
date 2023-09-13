@@ -12,6 +12,7 @@ export class Player extends Entity {
   #maxLife = 20;
   #attack = 10;
   #defense = 8;
+  #traits = []
 
   set actualLife(actualLife) {
     this.#actualLife = actualLife;
@@ -41,8 +42,16 @@ export class Player extends Entity {
   get defense() {
     return this.#defense;
   }
+
+  get traits() {
+    return this.#traits;
+  }
   openChest(chest) {
     chest.give(this);
+  }
+
+  interactWithNpc(npc) {
+    npc.applyRandomBuffOrDebuff(this);
   }
 
   initInteraction(entitiesToInteract) {
@@ -77,13 +86,15 @@ export class Player extends Entity {
     // }
 
     if (entitiesToInteract[1] instanceof Npc) {
-      console.log("npc");
+      this.interactWithNpc(entitiesToInteract[1]);
+      console.log(this);
+      this.reRenderStats();
     }
 
     if (entitiesToInteract[1] instanceof Chest && !entitiesToInteract[1].isOpen) {
       this.openChest(entitiesToInteract[1]);
       console.log(this);
-      this.reRenderStats()
+      this.reRenderStats();
     }
   }
 

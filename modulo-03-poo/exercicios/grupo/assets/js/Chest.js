@@ -39,29 +39,9 @@ export class Chest extends Entity {
         this.#openChest();
         this.#treasure.give(player);
         this.#treasure = null;
+        Map.updateEntity(this);
     }
 
-    // static #updateImage(chest) {
-    //     chest.#isOpen ?
-    //         (chest) => {
-    //
-    //     } : (chest) => {
-    //
-    //     }
-    // }
-
-    // render(){
-    //     const screenMap = document.querySelector('#map')
-    //     const chest = document.createElement('div')
-    //     const chestImage = document.createElement('img')
-    //     chestImage.src = `../grupo/assets/images/icons/chest.png`
-    //     chestImage.className = "absolute top-0 left-0"
-    //
-    //     chest.className = `absolute top-[calc(${this.yActualPosition}*20px)] left-[calc(${this.xActualPosition}*20px)] w-5 h-5 overflow-hidden`
-    //     chest.appendChild(chestImage)
-    //
-    //     screenMap.appendChild(chest)
-    // }
     #updateImage() {
         let imageClasses = [...this.chestImageElement.classList].filter(c => !c.startsWith('top-'));
 
