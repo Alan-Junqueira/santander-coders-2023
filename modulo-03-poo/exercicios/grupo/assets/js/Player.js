@@ -94,7 +94,7 @@ export class Player extends Entity {
       const proceed = confirm('Seguir na batalha?');
       attack = "";
       proceed ? attack = battle.move(entitiesToInteract[0], entitiesToInteract[1], true) :
-        attack = battle.move(entitiesToInteract[1], entitiesToInteract[0], false);
+        attack = battle.move(entitiesToInteract[0], entitiesToInteract[1], false);
       console.log(attack);
     } else if (!attack.isBattleEnded) {
       attack = "";
