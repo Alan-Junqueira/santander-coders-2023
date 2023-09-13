@@ -17,7 +17,8 @@ export class Npc extends Entity {
 			this.xActualPosition = xActualPosition;
 			this.yActualPosition = yActualPosition;
 
-			Map.addEntityToMappedEntities(this)
+			Map.addEntityToMappedEntities(this);
+			this.render();
 		}
 	}
 
@@ -44,35 +45,26 @@ export class Npc extends Entity {
 			const buffValue = Math.floor(Math.random() * 3 + 1);
 			this.#buffs[statToBuff] = buffValue;
 			player[statToBuff] += buffValue;
-			// console.log(
-			// 	`${this.name} aumentou o ${statToBuff} de ${player.name} em ${buffValue}.`
-			// );
 		} else {
 			const statToDebuff = Math.random() < 0.5 ? 'attack' : 'defense';
 			const debuffValue = Math.floor(Math.random() * 3 + 1);
 			this.#debuffs[statToDebuff] = debuffValue;
 			player[statToDebuff] -= debuffValue;
-			// console.log(
-			// 	`${this.name} diminuiu o ${statToDebuff} de ${player.name} em ${debuffValue}.`
-			// );
 		}
 	}
+
+	render() {
+		const screenMap = document.querySelector('#map');
+		const npc = document.createElement('div');
+		const npcImage = document.createElement('img');
+		const imageSource = `../grupo/assets/images/npc/silver-guard.png`;
+
+		npcImage.src = imageSource;
+		npcImage.className = 'absolute top-0 left-0';
+
+		npc.className = `absolute top-[calc(${this.yActualPosition}*20px)] left-[calc(${this.xActualPosition}*20px)] w-5 h-5 overflow-hidden`;
+		npc.appendChild(npcImage);
+
+		screenMap.appendChild(npc);
+	}
 }
-
-// const npc1 = new Npc({
-// 	name: 'Guarda da Cidade',
-// 	xActualPosition: 10,
-// 	yActualPosition: 5,
-// 	dialoguePhrases: [
-// 		'Cidadão, seja bem-vindo à nossa cidade.',
-// 		'Mantenha-se seguro enquanto estiver aqui.',
-// 		'Precisa de informações sobre a cidade? Estou à disposição.',
-// 	],
-// });
-
-// Aplicando o buff ou debuff ao jogador
-// npc2.applyRandomBuffOrDebuff(player);
-// npc4.applyRandomBuffOrDebuff(player);
-
-// Exibindo o estado atual do jogador
-// console.log(`${player.name}: Ataque - ${player.attack}, Defesa - ${player.defense}`);
