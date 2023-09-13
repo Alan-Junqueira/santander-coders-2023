@@ -152,14 +152,14 @@ export class Mob extends Entity {
     const min = this.#minAttack;
     const max = this.#maxAttack;
 
-    this.#attack = Math.floor(Math.random() * (max - min + 1) + min);
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   setDefense() {
     const min = this.#minDefense;
     const max = this.#maxDefense;
 
-    this.#defense = Math.floor(Math.random() * (max - min + 1) + min);
+    return  Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   toggleVisibility() {
@@ -171,19 +171,19 @@ export class Mob extends Entity {
   }
 
   setMinAttack() {
-    return Math.floor(Math.random() * 4 + 1);
+    return Math.floor(Math.random() * 10 + 1);
   }
 
   setMaxAttack() {
-    return Math.floor(Math.random() * 9 + this.#minAttack);
+    return Math.floor(Math.random() * 20 + this.#minAttack);
   }
 
   setMinDefense() {
-    return Math.floor(Math.random() * 2 + 1);
+    return Math.floor(Math.random() * 5 + 1);
   }
 
   setMaxDefense() {
-    return Math.floor(Math.random() * 3 + this.#minDefense);
+    return Math.floor(Math.random() * 10 + this.#minDefense);
   }
 
   static generateRandomName() {

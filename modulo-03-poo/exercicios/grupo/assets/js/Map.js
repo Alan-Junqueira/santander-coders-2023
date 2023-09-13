@@ -351,7 +351,7 @@ export class Map {
   }
 
   renderChests() {
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 30; i++) {
       const x = Math.floor(Math.random() * 51);
       const y = Math.floor(Math.random() * 30);
 
@@ -375,5 +375,7 @@ export class Map {
     this.renderChests();
     this.renderInitialMobs();
     Battle.renderBattleHistory()
+
+    console.log(Map.#mappedEntities)
   }
 }

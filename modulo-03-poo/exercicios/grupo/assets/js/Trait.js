@@ -92,7 +92,6 @@ export class Trait {
         }
         character.traits.push(this);
         GameMap.updateEntity(character);
-        Player.reRenderStats();
     }
 
     #applyOnPlayer(player) {

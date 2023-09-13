@@ -357,7 +357,7 @@ export class Player extends Entity {
   }
 
 
-  static reRenderStats() {
+  reRenderStats() {
     const playerName = document.querySelector('span#playerName')
     const playerActualHealth = document.querySelector("span#playerActualHealth")
     const playerMaxHealth = document.querySelector("span#playerMaxHealth")
