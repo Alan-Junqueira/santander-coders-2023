@@ -2,6 +2,7 @@ import { Mob } from "./Mob.js";
 import { Boss } from "./Boss.js";
 import { Chest } from "./Chest.js";
 import { Battle } from "./Battle.js";
+import { Npc } from "./NPC.js"
 
 export class Map {
   // x51 - 1020
@@ -358,12 +359,11 @@ export class Map {
 
 			if (!isPositionValid || isPositionUsed) {
 			} else {
-				const npc = new Npc({
+				new Npc({
 					name: Mob.generateRandomName(),
 					xActualPosition: x,
 					yActualPosition: y,
 				});
-				npc.init();
 			}
 		}
 	}
