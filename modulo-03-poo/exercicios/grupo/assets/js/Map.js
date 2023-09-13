@@ -344,6 +344,30 @@ export class Map {
     }
   }
 
+  	renderNpcs() {
+		for (let i = 0; i < 15; i++) {
+			const x = Math.floor(Math.random() * 51);
+			const y = Math.floor(Math.random() * 30);
+
+			const isPositionValid = Map.isPositionValid({
+				x,
+				y,
+			});
+
+			const isPositionUsed = Map.isPositionUsed({ x, y });
+
+			if (!isPositionValid || isPositionUsed) {
+			} else {
+				const npc = new Npc({
+					name: Mob.generateRandomName(),
+					xActualPosition: x,
+					yActualPosition: y,
+				});
+				npc.init();
+			}
+		}
+	}
+
   renderBoss() {
     const x = 44;
     const y = 14;
@@ -373,6 +397,7 @@ export class Map {
     this.#init(player);
 
     this.renderChests();
+    this.renderNpcs();
     this.renderInitialMobs();
     Battle.renderBattleHistory()
 
