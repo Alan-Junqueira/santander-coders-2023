@@ -5,6 +5,8 @@ import {Curse} from "./Curse.js";
 
 export class Npc extends Entity {
 	#dialoguePhrases;
+	// #buffs;
+	// #debuffs;
 	#gift
 	#hasSurprise
 
@@ -12,6 +14,8 @@ export class Npc extends Entity {
 		super();
 		this.name = name;
 		this.#dialoguePhrases = dialoguePhrases;
+		// this.#buffs = {};
+		// this.#debuffs = {};
 		this.#gift = (Math.random() <  Map.difficult.npcGiveBuffPercentChance / 100)? new Blessing() : new Curse();
 		this.#hasSurprise = true;
 
@@ -47,6 +51,22 @@ export class Npc extends Entity {
 		this.#hasSurprise = false;
 		Map.updateEntity(this);
 	}
+
+	// applyRandomBuffOrDebuff(player) {
+	// 	const isBuff = Math.random() < 0.5;
+	//
+	// 	if (isBuff) {
+	// 		const statToBuff = Math.random() < 0.5 ? 'attack' : 'defense';
+	// 		const buffValue = Math.floor(Math.random() * 3 + 1);
+	// 		this.#buffs[statToBuff] = buffValue;
+	// 		player[statToBuff] += buffValue;
+	// 	} else {
+	// 		const statToDebuff = Math.random() < 0.5 ? 'attack' : 'defense';
+	// 		const debuffValue = Math.floor(Math.random() * 3 + 1);
+	// 		this.#debuffs[statToDebuff] = debuffValue;
+	// 		player[statToDebuff] -= debuffValue;
+	// 	}
+	// }
 
 	render() {
 		const screenMap = document.querySelector('#map');
