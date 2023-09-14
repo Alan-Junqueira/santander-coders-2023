@@ -219,7 +219,7 @@ export class Battle {
     Map.updateEntity(defensor);
 
     if ((defensor.actualLife ?? defensor.actualHealth) <= 0) {
-      result.msg = this.battleEnded(attacker);
+      result.msg = this.battleEnded(attacker, defensor);
       result.keep = false;
       result.isBattleEnded = true;
       return result;
@@ -261,13 +261,15 @@ export class Battle {
   }
 
   //Método que registra o final da batalha
-  battleEnded(player) {
-    this.winner = player.name;
+  battleEnded(winner, loser) {
+    this.winner = winner.name;
     this.setTimeEndOfBattle(new Date());
 
-    if (player instanceof Player) {
-      player = this.giftBonus(player);
-      Map.updateEntity(player);
+    if (winner instanceof Player) {
+      winner = this.giftBonus(winner);
+      Map.updateEntity(winner);
+      loser.die();
+      Map.updateEntity(loser);
     }
 
     return `Batalha encerrada! Vencedor: ${this.winner}`;
