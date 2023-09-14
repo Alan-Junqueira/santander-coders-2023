@@ -50,6 +50,10 @@ export class Player extends Entity {
     chest.give(this);
   }
 
+  interactWithNpc(npc) {
+    npc.applyRandomBuffOrDebuff(this);
+  }
+
   initInteraction(entitiesToInteract) {
     if (entitiesToInteract.length === 1) return;
 
@@ -83,13 +87,15 @@ export class Player extends Entity {
     // }
 
     if (entitiesToInteract[1] instanceof Npc) {
-      entitiesToInteract[1].applyRandomBuffOrDebuff(this);
+      this.interactWithNpc(entitiesToInteract[1]);
+      console.log(this);
+      this.reRenderStats();
     }
 
     if (entitiesToInteract[1] instanceof Chest && !entitiesToInteract[1].isOpen) {
       this.openChest(entitiesToInteract[1]);
       console.log(this);
-      this.reRenderStats()
+      this.reRenderStats();
     }
   }
 
