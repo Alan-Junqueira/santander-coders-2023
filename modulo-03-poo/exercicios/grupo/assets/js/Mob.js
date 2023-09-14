@@ -239,16 +239,13 @@ export class Mob extends Entity {
   }
 
   #updateImage() {
-    if (this.#isAlive) {
-      this.mobImageElement.style.filter = '';
-    } else {
+    if (!this.#isAlive && this.#isVisible) {
       this.mobImageElement.style.filter = 'grayscale(100%)';
     }
   }
 
   die() {
     this.#isAlive = false;
-    this.#isVisible = false;
     this.#updateImage();
   }
 }
