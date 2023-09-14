@@ -168,6 +168,7 @@ export class Map {
       extraHitPercentChance: 40,
       extraDefensePercentChance: 40,
       positiveLootOutcomePercentChance: 90,
+      npcGiveBuffPercentChance: 95,
       bossBlessingNumber: 2,
     },
     normal: {
@@ -177,6 +178,7 @@ export class Map {
       extraHitPercentChance: 30,
       extraDefensePercentChance: 30,
       positiveLootOutcomePercentChance: 80,
+      npcGiveBuffPercentChance: 90,
       bossBlessingNumber: 4,
     },
     hard: {
@@ -186,6 +188,7 @@ export class Map {
       extraHitPercentChance: 15,
       extraDefensePercentChance: 15,
       positiveLootOutcomePercentChance: 70,
+      npcGiveBuffPercentChanceo: 80,
       bossBlessingNumber: 6,
     },
     pro: {
@@ -195,6 +198,7 @@ export class Map {
       extraHitPercentChance: 0,
       extraDefensePercentChance: 0,
       positiveLootOutcomePercentChance: 60,
+      npcGiveBuffPercentChance: 70,
       bossBlessingNumber: 8,
     },
   };

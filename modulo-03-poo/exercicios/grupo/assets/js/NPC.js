@@ -1,17 +1,19 @@
 import { Entity } from './Entity.js';
 import { Map } from './Map.js';
+import { Blessing } from "./Blessing.js";
+import {Curse} from "./Curse.js";
 
 export class Npc extends Entity {
 	#dialoguePhrases;
-	#buffs;
-	#debuffs;
+	#gift
+	#hasSurprise
 
 	constructor({ name, xActualPosition, yActualPosition, dialoguePhrases }) {
 		super();
 		this.name = name;
 		this.#dialoguePhrases = dialoguePhrases;
-		this.#buffs = {};
-		this.#debuffs = {};
+		this.#gift = (Math.random() <  Map.difficult.npcGiveBuffPercentChance / 100)? new Blessing() : new Curse();
+		this.#hasSurprise = true;
 
 		if (Map.isPositionValid({ x: xActualPosition, y: yActualPosition })) {
 			this.xActualPosition = xActualPosition;
@@ -38,19 +40,12 @@ export class Npc extends Entity {
 	}
 
 	applyRandomBuffOrDebuff(player) {
-		const isBuff = Math.random() < 0.5;
-
-		if (isBuff) {
-			const statToBuff = Math.random() < 0.5 ? 'attack' : 'defense';
-			const buffValue = Math.floor(Math.random() * 3 + 1);
-			this.#buffs[statToBuff] = buffValue;
-			player[statToBuff] += buffValue;
-		} else {
-			const statToDebuff = Math.random() < 0.5 ? 'attack' : 'defense';
-			const debuffValue = Math.floor(Math.random() * 3 + 1);
-			this.#debuffs[statToDebuff] = debuffValue;
-			player[statToDebuff] -= debuffValue;
+		if (!this.#hasSurprise) {
+			return
 		}
+		this.#gift.give(player);
+		this.#hasSurprise = false;
+		Map.updateEntity(this);
 	}
 
 	render() {
