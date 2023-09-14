@@ -58,6 +58,10 @@ export class Player extends Entity {
     if (entitiesToInteract.length === 1) return;
 
     if (entitiesToInteract[1] instanceof Mob) {
+      if (!entitiesToInteract[1].isAlive) {
+        return;
+      }
+
       const init = confirm('Deseja iniciar batalha?');
 
       if (!init) {

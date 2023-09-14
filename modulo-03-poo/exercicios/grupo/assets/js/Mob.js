@@ -54,13 +54,16 @@ export class Mob extends Entity {
   #minDefense;
   #maxDefense;
   #isVisible;
+  #isAlive;
   #attack;
   #defense;
+  mobImageElement = null;
 
   constructor({ name, isVisible, xActualPosition, yActualPosition }) {
     super();
     this.name = name;
     this.#isVisible = isVisible;
+    this.#isAlive = true;
 
     if (Map.isPositionValid({ x: xActualPosition, y: yActualPosition })) {
       this.xActualPosition = xActualPosition;
@@ -148,6 +151,14 @@ export class Mob extends Entity {
     return this.#defense;
   }
 
+  get isAlive() {
+    return this.#isAlive;
+  }
+
+  set isAlive(isAlive) {
+    this.#isAlive = isAlive;
+  }
+
   setAttack() {
     const min = this.#minAttack;
     const max = this.#maxAttack;
@@ -214,17 +225,31 @@ export class Mob extends Entity {
     if (this.#isVisible) {
       const screenMap = document.querySelector("#map");
       const mob = document.createElement("div");
-      const mobImage = document.createElement("img");
+      this.mobImageElement = document.createElement("img");  // Store the image element
       const imageSource = `../grupo/assets/images/npc/black-guard.png`;
 
-      mobImage.src = imageSource;
-      mobImage.className = "absolute top-0 left-0";
+      this.mobImageElement.src = imageSource;
+      this.mobImageElement.className = "absolute top-0 left-0";
 
       mob.className = `absolute top-[calc(${this.yActualPosition}*20px)] left-[calc(${this.xActualPosition}*20px)] w-5 h-5 overflow-hidden`;
-      mob.appendChild(mobImage);
+      mob.appendChild(this.mobImageElement);
 
       screenMap.appendChild(mob);
     }
+  }
+
+  #updateImage() {
+    if (this.#isAlive) {
+      this.mobImageElement.style.filter = '';
+    } else {
+      this.mobImageElement.style.filter = 'grayscale(100%)';
+    }
+  }
+
+  die() {
+    this.#isAlive = false;
+    this.#isVisible = false;
+    this.#updateImage();
   }
 }
 
