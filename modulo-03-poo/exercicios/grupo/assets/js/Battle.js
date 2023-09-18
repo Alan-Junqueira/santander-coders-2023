@@ -114,7 +114,7 @@ export class Battle {
     }
 
     // Caso o jogador não desista ou for a vez do adversário do player
-    action.move = `Jogador ${action.attacker} atacou ${enemy.name}`;
+    action.move = `${action.attacker} atacou ${enemy.name}`;
     const resultAttack = this.attackAction(player, enemy);
 
     action.description = resultAttack.msg;
@@ -316,12 +316,14 @@ export class Battle {
     if (bat) {
       const battleHistory = document.querySelector("div#battleHistory");
       battleHistory.className =
-        "h-4/5 overflow-y-scroll scrollbar-hide text-sm py-2 flex flex-col gap-2";
+        "h-[37.5rem] overflow-y-scroll scrollbar-hide text-sm py-2 flex flex-col gap-2";
 
       bat.battleHistory.forEach((battle) => {
         const battleHistoryContainer = document.createElement("div");
         const attacker = document.createElement("p");
         const description = document.createElement("p");
+
+        attacker.className = "bg-amber-600 text-amber-200 px-2 py-1 w-fit rounded-lg";
 
         attacker.innerText = battle.attacker;
         description.innerText = `${battle.move} - ${battle.description}`;

@@ -188,7 +188,7 @@ export class Map {
       extraHitPercentChance: 15,
       extraDefensePercentChance: 15,
       positiveLootOutcomePercentChance: 70,
-      npcGiveBuffPercentChanceo: 80,
+      npcGiveBuffPercentChance: 80,
       bossBlessingNumber: 6,
     },
     pro: {
@@ -349,7 +349,7 @@ export class Map {
     }
   }
 
-  	renderNpcs() {
+  renderNpcs() {
 		for (let i = 0; i < 15; i++) {
 			const x = Math.floor(Math.random() * 51);
 			const y = Math.floor(Math.random() * 30);
