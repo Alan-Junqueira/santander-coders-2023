@@ -40,6 +40,51 @@ const possibleOperators = {
   "/": "divide",
 };
 
+const updateResultPreviewDom = (value) => {
+  if (value > 20) {
+    resultPreview.classList.add("text-green-500");
+    resultPreview.classList.remove("text-red-500");
+  } else {
+    resultPreview.classList.add("text-red-500");
+    resultPreview.classList.remove("text-green-500");
+  }
+  resultPreview.innerText = value;
+};
+
+const switchWithIterator = ({
+  iterator,
+  firstValue,
+  secondValue
+}) => {
+  let value
+  switch (iterator) {
+    case "+":
+      value = +firstValue + +secondValue ?? 0;
+
+      updateResultPreviewDom(value)
+      operationOperator.innerText = "+";
+      break;
+    case "-":
+      value = firstValue - secondValue ?? 0;
+
+      updateResultPreviewDom(value)
+      operationOperator.innerText = "-";
+      break;
+    case "/":
+      value = firstValue / secondValue ?? 0;
+
+      updateResultPreviewDom(value)
+      operationOperator.innerText = "/";
+      break;
+    case "*":
+      value = firstValue * secondValue ?? 0;
+
+      updateResultPreviewDom(value)
+      operationOperator.innerText = "*";
+      break;
+  }
+}
+
 window.addEventListener("keyup", (e) => {
   firstValue = operationFirstNumber.innerText;
   secondValue = operationSecondNumber.innerText;
@@ -50,63 +95,11 @@ window.addEventListener("keyup", (e) => {
   }
 
   if (!+firstValue) return;
-  let value;
-  switch (e.key) {
-    case "+":
-      value = +firstValue + +secondValue ?? 0;
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-      resultPreview.innerText = value;
-      operationOperator.innerText = "+";
-      break;
-    case "-":
-      value = firstValue - secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "-";
-      break;
-    case "/":
-      value = firstValue / secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "/";
-      break;
-    case "*":
-      value = firstValue * secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "*";
-      break;
-  }
+  switchWithIterator({
+    iterator: e.key,
+    firstValue,
+    secondValue
+  })
 });
 
 inputFirstInteraction.addEventListener("input", (e) => {
@@ -175,63 +168,11 @@ operationFirstNumber.addEventListener("input", () => {
     return;
   }
 
-  let value;
-  switch (operationOperator.innerText) {
-    case "+":
-      value = +firstValue + +secondValue ?? 0;
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-      resultPreview.innerText = value;
-      operationOperator.innerText = "+";
-      break;
-    case "-":
-      value = firstValue - secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "-";
-      break;
-    case "/":
-      value = firstValue / secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "/";
-      break;
-    case "*":
-      value = firstValue * secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "*";
-      break;
-  }
+  switchWithIterator({
+    iterator: operationOperator.innerText,
+    firstValue,
+    secondValue
+  })
 });
 operationSecondNumber.addEventListener("input", () => {
   firstValue = operationFirstNumber.innerText;
@@ -242,69 +183,18 @@ operationSecondNumber.addEventListener("input", () => {
     return;
   }
 
-  let value;
-  switch (operationOperator.innerText) {
-    case "+":
-      value = +firstValue + +secondValue ?? 0;
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-      resultPreview.innerText = value;
-      operationOperator.innerText = "+";
-      break;
-    case "-":
-      value = firstValue - secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "-";
-      break;
-    case "/":
-      value = firstValue / secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "/";
-      break;
-    case "*":
-      value = firstValue * secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "*";
-      break;
-  }
+  switchWithIterator({
+    iterator: operationOperator.innerText,
+    firstValue,
+    secondValue
+  })
 });
 
 operationFirstNumber.addEventListener("click", () => {
   operationFirstNumber.className = "underline-offset-8 underline";
   operationSecondNumber.className = "";
 });
+
 operationSecondNumber.addEventListener("click", () => {
   operationFirstNumber.className = "";
   operationSecondNumber.className = "underline-offset-8 underline";
@@ -343,234 +233,34 @@ equalOperator.addEventListener("click", () => {
   firstValue = operationFirstNumber.innerText;
   secondValue = operationSecondNumber.innerText;
 
-  let value;
-  switch (operationOperator.innerText) {
-    case "+":
-      value = +firstValue + +secondValue ?? 0;
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-      resultPreview.innerText = value;
-      operationOperator.innerText = "+";
-      break;
-    case "-":
-      value = firstValue - secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "-";
-      break;
-    case "/":
-      value = firstValue / secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "/";
-      break;
-    case "*":
-      value = firstValue * secondValue ?? 0;
-
-      if (value > 20) {
-        resultPreview.classList.add("text-green-500");
-        resultPreview.classList.remove("text-red-500");
-      } else {
-        resultPreview.classList.add("text-red-500");
-        resultPreview.classList.remove("text-green-500");
-      }
-
-      resultPreview.innerText = value;
-      operationOperator.innerText = "*";
-      break;
-  }
+  switchWithIterator({
+    iterator: operationOperator.innerText,
+    firstValue,
+    secondValue
+  })
 });
 
-n0.addEventListener("click", (e) => {
-  const isFirstNumberActive = Array.from(
-    operationFirstNumber.classList
-  ).includes("underline");
-  const firstNumberIsZero = operationFirstNumber.innerText === "0";
-  const secondNumberIsZero = operationSecondNumber.innerText === "0";
-  if (isFirstNumberActive) {
-    operationFirstNumber.innerText = firstNumberIsZero
-      ? "0"
-      : (operationFirstNumber.innerText += "0");
-  } else {
-    operationSecondNumber.innerText = secondNumberIsZero
-      ? "0"
-      : (operationSecondNumber.innerText += "0");
-  }
-});
-n1.addEventListener("click", (e) => {
-  const isFirstNumberActive = Array.from(
-    operationFirstNumber.classList
-  ).includes("underline");
-  const firstNumberIsZero = operationFirstNumber.innerText === "0";
-  const secondNumberIsZero = operationSecondNumber.innerText === "0";
+[n0, n1, n2, n3, n4, n5, n6, n7, n8, n9].forEach(item => {
+  item.addEventListener("click", _ => {
+    const isFirstNumberActive = Array.from(
+      operationFirstNumber.classList
+    ).includes("underline");
 
-  if (isFirstNumberActive) {
-    operationFirstNumber.innerText = firstNumberIsZero
-      ? "1"
-      : (operationFirstNumber.innerText += "1");
-  } else {
-    operationSecondNumber.innerText = secondNumberIsZero
-      ? "1"
-      : (operationSecondNumber.innerText += "1");
-  }
-});
+    const number = item.id.split("-")[1]
 
-n2.addEventListener("click", (e) => {
-  const isFirstNumberActive = Array.from(
-    operationFirstNumber.classList
-  ).includes("underline");
-  const firstNumberIsZero = operationFirstNumber.innerText === "0";
-  const secondNumberIsZero = operationSecondNumber.innerText === "0";
-  if (isFirstNumberActive) {
-    operationFirstNumber.innerText = firstNumberIsZero
-      ? "2"
-      : (operationFirstNumber.innerText += "2");
-  } else {
-    operationSecondNumber.innerText = secondNumberIsZero
-      ? "2"
-      : (operationSecondNumber.innerText += "2");
-  }
-});
-
-n3.addEventListener("click", (e) => {
-  const isFirstNumberActive = Array.from(
-    operationFirstNumber.classList
-  ).includes("underline");
-  const firstNumberIsZero = operationFirstNumber.innerText === "0";
-  const secondNumberIsZero = operationSecondNumber.innerText === "0";
-  if (isFirstNumberActive) {
-    operationFirstNumber.innerText = firstNumberIsZero
-      ? "3"
-      : (operationFirstNumber.innerText += "3");
-  } else {
-    operationSecondNumber.innerText = secondNumberIsZero
-      ? "3"
-      : (operationSecondNumber.innerText += "3");
-  }
-});
-
-n4.addEventListener("click", (e) => {
-  const isFirstNumberActive = Array.from(
-    operationFirstNumber.classList
-  ).includes("underline");
-  const firstNumberIsZero = operationFirstNumber.innerText === "0";
-  const secondNumberIsZero = operationSecondNumber.innerText === "0";
-  if (isFirstNumberActive) {
-    operationFirstNumber.innerText = firstNumberIsZero
-      ? "4"
-      : (operationFirstNumber.innerText += "4");
-  } else {
-    operationSecondNumber.innerText = secondNumberIsZero
-      ? "4"
-      : (operationSecondNumber.innerText += "4");
-  }
-});
-
-n5.addEventListener("click", (e) => {
-  const isFirstNumberActive = Array.from(
-    operationFirstNumber.classList
-  ).includes("underline");
-  const firstNumberIsZero = operationFirstNumber.innerText === "0";
-  const secondNumberIsZero = operationSecondNumber.innerText === "0";
-  if (isFirstNumberActive) {
-    operationFirstNumber.innerText = firstNumberIsZero
-      ? "5"
-      : (operationFirstNumber.innerText += "5");
-  } else {
-    operationSecondNumber.innerText = secondNumberIsZero
-      ? "5"
-      : (operationSecondNumber.innerText += "5");
-  }
-});
-
-n6.addEventListener("click", (e) => {
-  const isFirstNumberActive = Array.from(
-    operationFirstNumber.classList
-  ).includes("underline");
-  const firstNumberIsZero = operationFirstNumber.innerText === "0";
-  const secondNumberIsZero = operationSecondNumber.innerText === "0";
-  if (isFirstNumberActive) {
-    operationFirstNumber.innerText = firstNumberIsZero
-      ? "6"
-      : (operationFirstNumber.innerText += "6");
-  } else {
-    operationSecondNumber.innerText = secondNumberIsZero
-      ? "6"
-      : (operationSecondNumber.innerText += "6");
-  }
-});
-
-n7.addEventListener("click", (e) => {
-  const isFirstNumberActive = Array.from(
-    operationFirstNumber.classList
-  ).includes("underline");
-  const firstNumberIsZero = operationFirstNumber.innerText === "0";
-  const secondNumberIsZero = operationSecondNumber.innerText === "0";
-  if (isFirstNumberActive) {
-    operationFirstNumber.innerText = firstNumberIsZero
-      ? "7"
-      : (operationFirstNumber.innerText += "7");
-  } else {
-    operationSecondNumber.innerText = secondNumberIsZero
-      ? "7"
-      : (operationSecondNumber.innerText += "7");
-  }
-});
-
-n8.addEventListener("click", (e) => {
-  const isFirstNumberActive = Array.from(
-    operationFirstNumber.classList
-  ).includes("underline");
-  const firstNumberIsZero = operationFirstNumber.innerText === "0";
-  const secondNumberIsZero = operationSecondNumber.innerText === "0";
-  if (isFirstNumberActive) {
-    operationFirstNumber.innerText = firstNumberIsZero
-      ? "8"
-      : (operationFirstNumber.innerText += "8");
-  } else {
-    operationSecondNumber.innerText = secondNumberIsZero
-      ? "8"
-      : (operationSecondNumber.innerText += "8");
-  }
-});
-
-n9.addEventListener("click", (e) => {
-  const isFirstNumberActive = Array.from(
-    operationFirstNumber.classList
-  ).includes("underline");
-  const firstNumberIsZero = operationFirstNumber.innerText === "0";
-  const secondNumberIsZero = operationSecondNumber.innerText === "0";
-  if (isFirstNumberActive) {
-    operationFirstNumber.innerText = firstNumberIsZero
-      ? "9"
-      : (operationFirstNumber.innerText += "9");
-  } else {
-    operationSecondNumber.innerText = secondNumberIsZero
-      ? "9"
-      : (operationSecondNumber.innerText += "9");
-  }
-});
+    const firstNumberIsZero = operationFirstNumber.innerText === "0";
+    const secondNumberIsZero = operationSecondNumber.innerText === "0";
+    if (isFirstNumberActive) {
+      operationFirstNumber.innerText = firstNumberIsZero
+        ? number
+        : (operationFirstNumber.innerText += number);
+    } else {
+      operationSecondNumber.innerText = secondNumberIsZero
+        ? number
+        : (operationSecondNumber.innerText += number);
+    }
+  })
+})
 
 const updateResultPreview = (text) => {
   resultPreview.innerText = text;
