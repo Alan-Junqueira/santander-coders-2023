@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brazilian-values"></script>
+    <title>Crud Animais</title>
+  </head>
+  <body class="bg-gray-900">
+    <div class="flex items-center justify-center">
+      <div class="w-11/12 flex flex-col gap-4">
+        <form id="create-form" class="w-full">
+          <h1 class="text-center font-bold uppercase text-3xl">
+            Cadastro de pets
+          </h1>
+          <div>
+            <label for="name">Nome</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Digite o nome do pet"
+              id="name"
+            />
+          </div>
+
+          <div>
+            <label for="birth-date">Data de nascimento</label>
+            <input
+              type="date"
+              name="birthDate"
+              placeholder="Digite a idade do pet"
+              id="birth-date"
+            />
+          </div>
+
+          <div>
+            <label for="kind">Tipo</label>
+            <select name="kind" id="kind">
+              <option disabled selected>Especie do pet</option>
+              <option value="dog">Cachorro</option>
+              <option value="cat">Gato</option>
+              <option value="rabbit">Coelho</option>
+              <option value="fish">Peixe</option>
+              <option value="bird">Pássaro</option>
+              <option value="guineaPig">Porquinho da India</option>
+              <option value="Hamster">Hamster</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="size">Porte</label>
+            <select name="size" id="size">
+              <option disabled selected>Tamanho do pet</option>
+              <option value="small">Pequeno</option>
+              <option value="medium">Médio</option>
+              <option value="big">Grande</option>
+            </select>
+          </div>
+
+          <div>
+            <label from="sex">Sexo</label>
+            <label>
+              <input type="radio" name="sex" value="masc" />
+              Masculino
+            </label>
+            <label>
+              <input type="radio" name="sex" value="fem" />
+              Feminino
+            </label>
+          </div>
+
+          <div>
+            <label for="responsibleEmail">Email do Responsável</label>
+            <input
+              type="text"
+              name="responsibleEmail"
+              placeholder="Email do responsável"
+              id="responsibleEmail"
+            />
+          </div>
+
+          <div>
+            <label for="responsiblePhone">Telefone do Responsável</label>
+            <input
+              type="number"
+              name="responsiblePhone"
+              placeholder="Email do responsável"
+              id="responsiblePhone"
+            />
+          </div>
+
+          <button type="submit">Cadastrar Animal</button>
+        </form>
+
+        <div class="bg-gray-200 rounded-md py-4 overflow-x-auto mb-10">
+          <table id="pets-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
