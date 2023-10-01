@@ -5,9 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/brazilian-values"></script>
+    <script src="./auth.js"></script>
     <title>Crud Animais</title>
   </head>
-  <body class="bg-gray-900">
+  <body class="bg-gray-900 relative">
+    <div id="update-form-container" class="hidden z-50 w-11/12 flex flex-col gap-4">
+      <div class="absolute inset-0 bg-black/80 z-10"></div>
+      <form id="update-form" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 p-4 bg-gray-200 rounded-md w-11/12">
+        <h1 class="text-center font-bold uppercase text-3xl">
+          Atualização de pets
+        </h1>
+        <div>
+          <label for="name">Nome</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Digite o nome do pet"
+            id="name"
+          />
+        </div>
+
+        <div>
+          <label for="birth-date">Data de nascimento</label>
+          <input
+            type="date"
+            name="birthDate"
+            placeholder="Digite a idade do pet"
+            id="birth-date"
+          />
+        </div>
+
+        <div>
+          <label for="kind">Tipo</label>
+          <select name="kind" id="kind">
+            <option disabled selected>Especie do pet</option>
+            <option value="dog">Cachorro</option>
+            <option value="cat">Gato</option>
+            <option value="rabbit">Coelho</option>
+            <option value="fish">Peixe</option>
+            <option value="bird">Pássaro</option>
+            <option value="guineaPig">Porquinho da India</option>
+            <option value="Hamster">Hamster</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="size">Porte</label>
+          <select name="size" id="size">
+            <option disabled selected>Tamanho do pet</option>
+            <option value="small">Pequeno</option>
+            <option value="medium">Médio</option>
+            <option value="big">Grande</option>
+          </select>
+        </div>
+
+        <div>
+          <label from="sex">Sexo</label>
+          <label>
+            <input type="radio" name="sex" value="masc" />
+            Masculino
+          </label>
+          <label>
+            <input type="radio" name="sex" value="fem" />
+            Feminino
+          </label>
+        </div>
+
+        <div>
+          <label for="responsibleCpf">Cpf do Responsável</label>
+          <input
+            type="text"
+            name="responsibleCpf"
+            placeholder="Cpf do responsável"
+            id="responsibleCpf"
+          />
+        </div>
+
+        <div>
+          <label for="responsiblePhone">Telefone do Responsável</label>
+          <input
+            type="number"
+            name="responsiblePhone"
+            placeholder="Telefone do responsável"
+            id="responsiblePhone"
+          />
+        </div>
+
+        <button type="submit">Atualizar Pet</button>
+      </form>
+    </div>
+
     <div class="flex items-center justify-center">
       <div class="w-11/12 flex flex-col gap-4">
         <form id="create-form" class="w-full">
@@ -71,12 +158,12 @@
           </div>
 
           <div>
-            <label for="responsibleEmail">Email do Responsável</label>
+            <label for="responsibleCpf">Cpf do Responsável</label>
             <input
               type="text"
-              name="responsibleEmail"
-              placeholder="Email do responsável"
-              id="responsibleEmail"
+              name="responsibleCpf"
+              placeholder="Cpf do responsável"
+              id="responsibleCpf"
             />
           </div>
 
@@ -85,7 +172,7 @@
             <input
               type="number"
               name="responsiblePhone"
-              placeholder="Email do responsável"
+              placeholder="Telefone do responsável"
               id="responsiblePhone"
             />
           </div>
