@@ -1,0 +1,15 @@
+footer {
+  background-color: rgb(6, 9, 25);
+  padding: 7.2rem 12rem;
+  border-top: 1px solid rgb(255, 255, 255);
+
+  grid-template-columns: 40% 1fr;
+
+  &:first-child {
+
+  }
+
+  &:nth-child(2){
+    
+  }
+}
