@@ -1,0 +1,14 @@
+<div>
+  <h2>Tarefas</h2>
+  <ul *ngIf="isVisible">
+    <li
+      *ngFor="let task of tasks"
+    >
+      <div>
+        {{ task.title }} - {{ task.date }} - {{ task.description }}
+      </div>
+    </li>
+  </ul>
+
+  <button (click)="mostrarLista()">Mostrar Lista</button>
+</div>
