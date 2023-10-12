@@ -1,2 +1,11 @@
-<app-task-form (addTask)="onAddTask($event)" ></app-task-form>
-<app-task-list [tasks]="listTask" ></app-task-list>
+<app-task-form (addTask)="onAddTask($event)"></app-task-form>
+<app-task-list
+  [tasks]="listTask"
+  (choseTask)="onChoseTask($event)"
+></app-task-list>
+<div *ngIf="chosenTask">
+  <app-task-details
+  [task]="chosenTask"
+  (choseTask)="onChoseTask($event)"
+  ></app-task-details>
+</div>

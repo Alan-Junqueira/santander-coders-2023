@@ -1,15 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .blue {
-    color: blue;
+  color: blue;
 }
 
-.red { 
-    color: red;
+.red {
+  color: red;
 }
 
-.bg-green { 
-    background-color: green;
+.bg-green {
+  background-color: green;
 }
 
-color-red { 
-    color: red; 
+color-red {
+  color: red;
 }

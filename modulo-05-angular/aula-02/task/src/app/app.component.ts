@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 export interface IListTask {
-  title: string;
+  price: string;
   description: string;
   date: Date;
 }
@@ -13,11 +13,14 @@ export interface IListTask {
 })
 export class AppComponent {
   listTask: IListTask[] = [];
- // listTask: Array<IListTask> = [];
-
-
+  chosenTask: IListTask | null = null;
+  // listTask: Array<IListTask> = [];
 
   onAddTask(task: IListTask) {
-    this.listTask.push(task)
+    this.listTask.push(task);
+  }
+
+  onChoseTask(task: IListTask | null) {
+    this.chosenTask = task;
   }
 }

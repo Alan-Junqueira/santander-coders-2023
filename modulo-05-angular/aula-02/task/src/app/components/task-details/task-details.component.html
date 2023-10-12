@@ -1,0 +1,20 @@
+<div>
+  <h1>Detalhes da tarefa</h1>
+
+  <div *ngIf="task" (click)="handleChoseTask()">
+    <div class="flex items-center gap-2">
+      <h2 class="font-bold text-black">Preço:</h2>
+      <h3>{{ task.price }}</h3>
+    </div>
+    <div class="flex items-center gap-2">
+      <h2 class="font-bold text-black">Descrição:</h2>
+      <h3>{{ task.description }}</h3>
+    </div>
+    <div class="flex items-center gap-2">
+      <h2 class="font-bold text-black">Data de Nascimento:</h2>
+      <h3>{{ task.date | date : "MMM dd, YYYY" }}</h3>
+    </div>
+
+    <button>Apagar</button>
+  </div>
+</div>
