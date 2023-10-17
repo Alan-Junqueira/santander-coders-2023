@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IListTask } from 'src/app/app.component';
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-task-list',
@@ -9,8 +9,9 @@ import { IListTask } from 'src/app/app.component';
 export class TaskListComponent {
   name = 'teste';
   isVisible = true;
+  buttonText = this.isVisible ? "Esconde Texto" : "Mostra Texto";
 
-  @Input() tasks: IListTask[] = [];
+  @Input() tasks: Task[] = [];
 
   @Output() choseTask = new EventEmitter();
 
@@ -18,7 +19,7 @@ export class TaskListComponent {
     this.isVisible = !this.isVisible;
   }
 
-  handleChoseTask(task: IListTask) {
+  handleChoseTask(task: Task) {
     this.choseTask.emit(task);
   }
 }

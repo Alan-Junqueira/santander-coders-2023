@@ -1,20 +1,36 @@
-<div>
-  <h1>Detalhes da tarefa</h1>
+<div class="py-4 border-t border-t-neutral-50">
+  <h2 class="line-clamp-1 text-neutral-100 text-center mb-4 uppercase text-xl">
+    Detalhes da Tarefa
+  </h2>
 
-  <div *ngIf="task" (click)="handleChoseTask()">
-    <div class="flex items-center gap-2">
-      <h2 class="font-bold text-black">Preço:</h2>
-      <h3>{{ task.price }}</h3>
-    </div>
-    <div class="flex items-center gap-2">
-      <h2 class="font-bold text-black">Descrição:</h2>
-      <h3>{{ task.description }}</h3>
-    </div>
-    <div class="flex items-center gap-2">
-      <h2 class="font-bold text-black">Data de Nascimento:</h2>
-      <h3>{{ task.date | date : "MMM dd, YYYY" }}</h3>
+  <div *ngIf="task" (click)="handleChoseTask()" class="flex flex-col gap-4">
+    <div class="flex flex-col gap-1">
+      <div class="flex items-center gap-2">
+        <h2 class="font-bold text-neutral-50">Preço:</h2>
+        <h3 class="text-neutral-50 font-normal">{{ task.title }}</h3>
+      </div>
+      <div class="flex items-center gap-2">
+        <h2 class="font-bold text-neutral-50">Descrição:</h2>
+        <h3 class="text-neutral-50 font-normal">{{ task.description }}</h3>
+      </div>
+      <div class="flex items-center gap-2">
+        <h2 class="font-bold text-neutral-50">Data de Nascimento:</h2>
+        <h3 class="text-neutral-50 font-normal">
+          {{ task.date | date : "MMM dd, YYYY" }}
+        </h3>
+      </div>
+      <div class="flex items-center gap-2">
+        <h2 class="font-bold text-neutral-50">Status</h2>
+        <h3 class="text-neutral-50 font-normal">
+          {{ task.status }}
+        </h3>
+      </div>
     </div>
 
-    <button>Apagar</button>
+    <button
+      class="w-fit px-4 py-2 rounded-lg bg-amber-400 text-neutral-900 font-bold"
+    >
+      Apagar
+    </button>
   </div>
 </div>

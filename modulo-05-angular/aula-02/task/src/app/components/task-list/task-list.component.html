@@ -1,14 +1,20 @@
-<div>
-  <h2>Tarefas</h2>
-  <ul *ngIf="isVisible">
+<div class="py-4 border-t border-t-neutral-50">
+  <h2 class="line-clamp-1 text-neutral-100 text-center mb-4 uppercase text-xl">
+    Tarefas
+  </h2>
+  <ul *ngIf="isVisible" class="flex flex-col gap-1 mb-4">
     <li *ngFor="let task of tasks" (click)="handleChoseTask(task)">
-      <div>
-        {{ task.price | formatPrice : { currency: "BRL" } }} -
-        {{ task.date | date : "DD/MM/YYY" }} -
-        {{ task.description | slice : 0 : 5 }}
-      </div>
+      <span class="text-neutral-50">
+        {{ task?.title }} - {{ task?.date | date : "dd/MM/YYY" }} -
+        {{ task?.description | slice : 0 : 5 }}
+      </span>
     </li>
   </ul>
 
-  <button (click)="mostrarLista()">Mostrar Lista</button>
+  <button
+    (click)="mostrarLista()"
+    class="w-fit px-4 py-2 rounded-lg bg-amber-400 text-neutral-900 font-bold"
+  >
+    {{ isVisible ? "Esconder Lista" : "Mostrar Lista" }}
+  </button>
 </div>

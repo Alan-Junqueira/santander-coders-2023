@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IListTask } from 'src/app/app.component';
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-task-details',
@@ -7,7 +7,7 @@ import { IListTask } from 'src/app/app.component';
   styleUrls: ['./task-details.component.scss'],
 })
 export class TaskDetailsComponent {
-  @Input() task: IListTask | null = null;
+  @Input() task: Task | null = null;
 
   @Output() choseTask = new EventEmitter();
 

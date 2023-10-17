@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { IListTask } from 'src/app/app.component';
+import { ITask } from 'src/app/app.component';
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-task-form',
@@ -9,11 +10,7 @@ import { IListTask } from 'src/app/app.component';
 export class TaskFormComponent {
   @Output() addTask = new EventEmitter();
 
-  public newTask = {
-    price: '',
-    description: '',
-    date: new Date(),
-  };
+  public newTask: Task = new Task('', '', new Date(), 'todo');
 
   submitTask() {
     this.addTask.emit({ ...this.newTask });

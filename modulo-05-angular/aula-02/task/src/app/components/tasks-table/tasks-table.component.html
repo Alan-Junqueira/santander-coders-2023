@@ -1,0 +1,29 @@
+<div>
+  <table class="table-fixed w-full">
+    <thead>
+      <tr class="bg-amber-500 rounded-md">
+        <th class="text-start py-1 text-gray-950 px-2">
+          <span class="pl-2"> Título </span>
+        </th>
+        <th class="text-start py-1 text-gray-950">Descrição</th>
+        <th class="text-start py-1 text-gray-950">Data</th>
+        <th class="text-start py-1 text-gray-950">Status</th>
+      </tr>
+    </thead>
+    <tbody class="border-collapse">
+      <tr
+        *ngFor="let task of tasks"
+        class="even:bg-gray-200 even:text-gray-900 text-gray-200 bg-amber-800"
+      >
+        <td>
+          <span class="pl-2 py-1 inline-block">
+            {{ task.title }}
+          </span>
+        </td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.date | date : "MMM dd, YYYY" }}</td>
+        <td>{{ task.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

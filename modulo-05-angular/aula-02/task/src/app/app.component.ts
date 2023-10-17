@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from './models/task.model';
 
-export interface IListTask {
+export interface ITask {
   price: string;
   description: string;
   date: Date;
+  category?: string;
 }
 
 @Component({
@@ -12,15 +14,22 @@ export interface IListTask {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  listTask: IListTask[] = [];
-  chosenTask: IListTask | null = null;
+  listTask: Task[] = [];
+  chosenTask: Task | null = null;
+  chosenTasks: Task[] = [];
   // listTask: Array<IListTask> = [];
 
-  onAddTask(task: IListTask) {
+  onAddTask(task: Task) {
+    console.log(task)
     this.listTask.push(task);
   }
 
-  onChoseTask(task: IListTask | null) {
-    this.chosenTask = task;
+  onChoseTask(task: Task | null) {
+    if (task) {
+      this.chosenTasks.push(task);
+      this.chosenTask = new Task(task.title, task.description, task.date, task.status);
+    } else {
+      this.chosenTask = null;
+    }
   }
 }

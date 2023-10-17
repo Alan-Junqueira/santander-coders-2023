@@ -8,6 +8,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { FormatPricePipe } from './pipes/format-price.pipe';
 import { PipesModule } from './pipes/pipes.module';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
+import { TasksTableComponent } from './components/tasks-table/tasks-table.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TaskDetailsComponent } from './components/task-details/task-details.com
     TaskFormComponent,
     TaskListComponent,
     TaskDetailsComponent,
+    TasksTableComponent,
   ],
   imports: [
     BrowserModule,
