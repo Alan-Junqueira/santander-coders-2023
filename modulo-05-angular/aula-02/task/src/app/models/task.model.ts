@@ -1,4 +1,4 @@
-type TStatus = 'todo' | 'inProgress' | 'done'
+export type TStatus = 'todo' | 'inProgress' | 'done'
 
 export class Task {
   constructor(

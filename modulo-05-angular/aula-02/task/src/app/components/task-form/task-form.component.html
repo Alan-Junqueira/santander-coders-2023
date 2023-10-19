@@ -31,7 +31,8 @@
         >Data de Vencimento</label
       >
       <input
-        class="rounded-md px-4 py-2 outline-none text-gray-950 bg-neutral-50 focus:ring-offset-2 focus:ring-amber-500 focus:ring-1"
+        inputStyle
+        [anyone]="'teste'"
         id="date"
         type="date"
         [(ngModel)]="newTask.date"

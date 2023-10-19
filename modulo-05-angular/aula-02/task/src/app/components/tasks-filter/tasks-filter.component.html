@@ -1,0 +1,25 @@
+<div class="flex flex-col gap-4">
+  <label class="text-base text-neutral-200" for="date">Status</label>
+  <form (ngSubmit)="filterTasks()" class="flex gap-4">
+    <select
+      name="status"
+      class="rounded-md px-4 py-2 outline-none text-gray-950 bg-neutral-50 focus:ring-offset-2 focus:ring-amber-500 focus:ring-1"
+      [(ngModel)]="status"
+      (ngModelChange)="filterTasks()"
+    >
+      <option value="todo">Todo</option>
+      <option value="inProgress">In Progress</option>
+      <option value="done">Done</option>
+      <option value="all">All</option>
+    </select>
+  </form>
+
+  <ul class="flex flex-col gap-1 mb-4">
+    <li *ngFor="let task of filteredList">
+      <span class="text-neutral-50">
+        {{ task?.title }} - {{ task?.date | date : "dd/MM/YYY" }} -
+        {{ task?.description | slice : 0 : 5 }}
+      </span>
+    </li>
+  </ul>
+</div>
