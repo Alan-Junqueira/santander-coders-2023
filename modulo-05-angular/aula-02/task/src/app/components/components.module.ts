@@ -7,6 +7,7 @@ import { TasksTableComponent } from './tasks-table/tasks-table.component';
 import { DirectivesModule } from '../directives/directives.module';
 import { FormsModule } from '@angular/forms';
 import { TasksFilterComponent } from './tasks-filter/tasks-filter.component';
+import { TasksKambamComponent } from './tasks-kambam/tasks-kambam.component';
 
 @NgModule({
   imports: [CommonModule, DirectivesModule, FormsModule],
@@ -16,12 +17,14 @@ import { TasksFilterComponent } from './tasks-filter/tasks-filter.component';
     TaskDetailsComponent,
     TasksTableComponent,
     TasksFilterComponent,
+    TasksKambamComponent,
   ],
   exports: [
     TaskFormComponent,
     TaskListComponent,
     TaskDetailsComponent,
     TasksTableComponent,
+    TasksKambamComponent,
   ],
 })
 export class ComponentsModule {}

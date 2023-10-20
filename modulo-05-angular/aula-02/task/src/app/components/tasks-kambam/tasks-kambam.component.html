@@ -1,0 +1,53 @@
+<div class="grid grid-cols-3 gap-2">
+  <div class="flex flex-col gap-2">
+    <h2
+      class="text-center uppercase bg-amber-500 text-gray-900 py-1 rounded-md font-bold"
+    >
+      TODO
+    </h2>
+    <ul
+      class="bg-gray-950 border-4 border-yellow-500 border-dashed p-4 rounded-md"
+    >
+      <li *ngFor="let task of tasks">
+        <span *ngIf="task.status === 'todo'" class="text-neutral-200">
+          {{ task?.title }} - {{ task?.date | date : "dd/MM/YYY" }} -
+          {{ task?.description | slice : 0 : 5 }}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="flex flex-col gap-2">
+    <h2
+      class="text-center uppercase bg-amber-500 text-gray-900 py-1 rounded-md font-bold"
+    >
+      In Progress
+    </h2>
+    <ul
+      class="bg-gray-950 border-4 border-yellow-500 border-dashed p-4 rounded-md"
+    >
+      <li *ngFor="let task of tasks">
+        <span *ngIf="task.status === 'inProgress'" class="text-neutral-200">
+          {{ task?.title }} - {{ task?.date | date : "dd/MM/YYY" }} -
+          {{ task?.description | slice : 0 : 5 }}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="flex flex-col gap-2">
+    <h2
+      class="text-center uppercase bg-amber-500 text-gray-900 py-1 rounded-md font-bold"
+    >
+      Done
+    </h2>
+    <ul
+      class="bg-gray-950 border-4 border-yellow-500 border-dashed p-4 rounded-md"
+    >
+      <li *ngFor="let task of tasks">
+        <span *ngIf="task.status === 'done'" class="text-neutral-200">
+          {{ task?.title }} - {{ task?.date | date : "dd/MM/YYY" }} -
+          {{ task?.description | slice : 0 : 5 }}
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
