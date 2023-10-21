@@ -7,5 +7,10 @@ import { Task } from 'src/app/models/task.model';
   styleUrls: ['./tasks-kambam.component.scss'],
 })
 export class TasksKambamComponent {
+  public boards = [
+    "todo",
+    "inProgress",
+    "done"
+  ]
   @Input() public tasks: Task[] = [];
 }
