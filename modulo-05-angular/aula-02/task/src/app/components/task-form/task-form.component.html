@@ -3,7 +3,11 @@
     Adicionar Nova Tarefa
   </h2>
 
-  <form (ngSubmit)="submitTask()" class="flex flex-col gap-4">
+  <form
+    (ngSubmit)="submitTask(form)"
+    class="flex flex-col gap-4"
+    #form="ngForm"
+  >
     <div class="flex flex-col">
       <label class="text-base text-neutral-200" for="title">Titulo</label>
       <input
@@ -12,7 +16,11 @@
         type="text"
         [(ngModel)]="newTask.title"
         name="title"
+        required
       />
+      <span class="text-red-500" *ngIf="formErr['title']">
+        {{ formErr["title"] }}
+      </span>
     </div>
     <div class="flex flex-col">
       <label class="text-base text-neutral-200" for="description"
@@ -24,7 +32,11 @@
         [(ngModel)]="newTask.description"
         name="description"
         class="rounded-md px-4 py-2 outline-none text-gray-950 bg-neutral-50 focus:ring-offset-2 focus:ring-amber-500 focus:ring-1 resize-none"
+        required
       ></textarea>
+      <span class="text-red-500" *ngIf="formErr['description']">
+        {{ formErr["description"] }}
+      </span>
     </div>
     <div class="flex flex-col">
       <label class="text-base text-neutral-200" for="date"
@@ -32,12 +44,15 @@
       >
       <input
         inputStyle
-        [anyone]="'teste'"
         id="date"
+        name="date"
         type="date"
         [(ngModel)]="newTask.date"
-        name="date"
+        required
       />
+      <span class="text-red-500" *ngIf="formErr['date']">
+        {{ formErr["date"] }}
+      </span>
     </div>
     <div class="flex flex-col">
       <label class="text-base text-neutral-200" for="date">Status</label>
@@ -45,11 +60,15 @@
         name="status"
         class="rounded-md px-4 py-2 outline-none text-gray-950 bg-neutral-50 focus:ring-offset-2 focus:ring-amber-500 focus:ring-1"
         [(ngModel)]="newTask.status"
+        required
       >
         <option value="todo">Todo</option>
         <option value="inProgress">In Progress</option>
         <option value="done">Done</option>
       </select>
+      <span class="text-red-500" *ngIf="formErr['status']">
+        {{ formErr["status"] }}
+      </span>
     </div>
 
     <button

@@ -20,7 +20,6 @@ export class AppComponent {
   // listTask: Array<IListTask> = [];
 
   onAddTask(task: Task) {
-    console.log(task)
     this.listTask.push(task);
   }
 
