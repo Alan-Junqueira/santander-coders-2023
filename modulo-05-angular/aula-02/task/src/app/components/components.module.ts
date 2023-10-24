@@ -8,9 +8,11 @@ import { DirectivesModule } from '../directives/directives.module';
 import { FormsModule } from '@angular/forms';
 import { TasksFilterComponent } from './tasks-filter/tasks-filter.component';
 import { TasksKambamComponent } from './tasks-kambam/tasks-kambam.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TasksFormReactiveComponent } from './tasks-form-reactive/tasks-form-reactive.component';
 
 @NgModule({
-  imports: [CommonModule, DirectivesModule, FormsModule],
+  imports: [CommonModule, DirectivesModule, FormsModule, ReactiveFormsModule],
   declarations: [
     TaskFormComponent,
     TaskListComponent,
@@ -18,6 +20,7 @@ import { TasksKambamComponent } from './tasks-kambam/tasks-kambam.component';
     TasksTableComponent,
     TasksFilterComponent,
     TasksKambamComponent,
+    TasksFormReactiveComponent,
   ],
   exports: [
     TaskFormComponent,
@@ -25,6 +28,7 @@ import { TasksKambamComponent } from './tasks-kambam/tasks-kambam.component';
     TaskDetailsComponent,
     TasksTableComponent,
     TasksKambamComponent,
+    TasksFormReactiveComponent
   ],
 })
 export class ComponentsModule {}

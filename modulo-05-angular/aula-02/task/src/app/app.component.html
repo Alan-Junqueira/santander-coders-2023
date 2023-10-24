@@ -1,6 +1,7 @@
 <div class="flex flex-col items-center bg-gray-900 min-h-screen py-4">
   <div class="max-w-5xl flex gap-4 flex-col w-full">
-    <app-task-form (addTask)="onAddTask($event)"></app-task-form>
+    <!-- <app-task-form (addTask)="onAddTask($event)"></app-task-form> -->
+    <app-tasks-form-reactive (addTask)="onAddTask($event)"></app-tasks-form-reactive>
     <app-task-list
       [tasks]="listTask"
       (choseTask)="onChoseTask($event)"
