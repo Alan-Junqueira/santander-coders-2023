@@ -17,8 +17,23 @@
         name="title"
         formControlName="title"
       />
-      <span>
-        {{ formTask.errors | json }}
+      <span
+        *ngIf="
+          formTask.controls['title'].errors &&
+          formTask.controls['title'].touched
+        "
+        textError
+      >
+        {{
+          formTask.controls["title"].errors["minlength"] &&
+            "Título deve ter no mínimo " +
+              formTask.controls["title"].errors["minlength"].requiredLength +
+              " caracteres."
+        }}
+        {{
+          formTask.controls["title"].errors["required"] &&
+            "Título é obrigatório"
+        }}
       </span>
     </div>
     <div class="flex flex-col">
@@ -30,26 +45,57 @@
         type="text"
         name="description"
         class="rounded-md px-4 py-2 outline-none text-gray-950 bg-neutral-50 focus:ring-offset-2 focus:ring-amber-500 focus:ring-1 resize-none"
-        required
+        formControlName="description"
       ></textarea>
+      <span
+        *ngIf="
+          formTask.controls['description'].errors &&
+          formTask.controls['description'].touched
+        "
+        textError
+      >
+        {{
+          formTask.controls["description"].errors["minlength"] &&
+            "Descrição deve ter no mínimo " +
+              formTask.controls["description"].errors["minlength"]
+                .requiredLength +
+              " caracteres."
+        }}
+        {{
+          formTask.controls["description"].errors["required"] &&
+            "Descrição é obrigatória"
+        }}
+      </span>
     </div>
     <div class="flex flex-col">
       <label class="text-base text-neutral-200" for="date"
         >Data de Vencimento</label
       >
-      <input inputStyle id="date" name="date" type="date" required />
+      <input
+        inputStyle
+        id="date"
+        name="date"
+        type="date"
+        formControlName="date"
+      />
+      <span *ngIf="formTask.controls['date'].errors" textError>
+        {{ formTask.controls["date"].errors | json }}
+      </span>
     </div>
     <div class="flex flex-col">
       <label class="text-base text-neutral-200" for="date">Status</label>
       <select
         name="status"
         class="rounded-md px-4 py-2 outline-none text-gray-950 bg-neutral-50 focus:ring-offset-2 focus:ring-amber-500 focus:ring-1"
-        required
+        formControlName="status"
       >
         <option value="todo">Todo</option>
         <option value="inProgress">In Progress</option>
         <option value="done">Done</option>
       </select>
+      <span *ngIf="formTask.controls['status'].errors" textError>
+        {{ formTask.controls["status"].errors | json }}
+      </span>
     </div>
 
     <button
