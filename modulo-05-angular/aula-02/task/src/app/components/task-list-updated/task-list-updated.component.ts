@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from 'src/app/models/task.model';
 
 @Component({
@@ -6,12 +6,22 @@ import { Task } from 'src/app/models/task.model';
   templateUrl: './task-list-updated.component.html',
   styleUrls: ['./task-list-updated.component.scss'],
 })
-export class TaskListUpdatedComponent {
-  @Input() public tasks: Task[] = [];
+export class TaskListUpdatedComponent implements OnInit {
 
-  @Output() updateTask = new EventEmitter<Task & { index: number }>();
+  @Input() public todoTasks: Task[] = [];
+  @Input() public inProgressTasks: Task[] = [];
+  @Input() public doneTasks: Task[] = [];
 
-  handleUpdateTask(task: Task & { index: number }) {
-    this.updateTask.emit(task);
+  @Output() updateTask = new EventEmitter<Task>();
+
+  handleUpdateTask(task: Task) {
+    console.log('task-list-updated', task);
+    this.updateTask.emit({ ...task });
+  }
+
+  ngOnInit(): void {
+    console.log(this.todoTasks)
+    console.log(this.inProgressTasks)
+    console.log(this.doneTasks)
   }
 }

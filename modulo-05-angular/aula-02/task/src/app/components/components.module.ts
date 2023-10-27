@@ -13,6 +13,7 @@ import { TasksFormReactiveComponent } from './tasks-form-reactive/tasks-form-rea
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskListUpdatedComponent } from './task-list-updated/task-list-updated.component';
 import { TaskStatusComponent } from './task-status/task-status.component';
+import { TaskUpdateModalComponent } from './task-update-modal/task-update-modal.component';
 
 @NgModule({
   imports: [CommonModule, DirectivesModule, FormsModule, ReactiveFormsModule],
@@ -27,6 +28,7 @@ import { TaskStatusComponent } from './task-status/task-status.component';
     TaskCardComponent,
     TaskListUpdatedComponent,
     TaskStatusComponent,
+    TaskUpdateModalComponent,
   ],
   exports: [
     TaskFormComponent,

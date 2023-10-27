@@ -23,5 +23,10 @@
     </div>
 
     <app-task-status [status]="task.status"></app-task-status>
+    <app-task-update-modal
+      (updateTask)="handleUpdateTask($event)"
+      [task]="task"
+      [index]="index"
+    ></app-task-update-modal>
   </ng-container>
 </div>

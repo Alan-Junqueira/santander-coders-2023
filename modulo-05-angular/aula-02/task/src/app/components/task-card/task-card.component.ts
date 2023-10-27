@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from 'src/app/models/task.model';
 
 @Component({
@@ -9,4 +9,11 @@ import { Task } from 'src/app/models/task.model';
 export class TaskCardComponent {
   @Input() task: Task = {} as Task;
   @Input() index: number = 0;
+
+  @Output() updateTask = new EventEmitter<Task>();
+
+  handleUpdateTask(task: Task) {
+    console.log('task-card', task);
+    this.updateTask.emit({ ...task });
+  }
 }

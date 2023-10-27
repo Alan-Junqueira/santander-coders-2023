@@ -20,6 +20,7 @@ export class AppComponent {
   // listTask: Array<IListTask> = [];
 
   onAddTask(task: Task) {
+    console.log(task)
     this.listTask.push(task);
   }
 
@@ -31,15 +32,18 @@ export class AppComponent {
         task.description,
         task.date,
         task.status,
-        task.tags
+        task.tags,
+        task.id
       );
     } else {
       this.chosenTask = null;
     }
   }
 
-  onUpdateTask({ index, ...task }: Task & { index: number }) {
-    this.listTask.splice(index, 1, task);
+  onUpdateTask(task: Task) {
+    const taskIndex = this.listTask.findIndex((t) => t.id === task.id);
+    console.log('app-component', task);
+    this.listTask.splice(taskIndex, 1, task);
   }
 
   todoTasks() {

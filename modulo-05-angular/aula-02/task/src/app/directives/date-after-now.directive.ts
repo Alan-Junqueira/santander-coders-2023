@@ -9,22 +9,19 @@ import {
 @Directive({
   selector: '[appDateAfterNow]',
 })
-export class DateAfterNowDirective implements OnInit, AfterContentInit {
+export class DateAfterNowDirective implements OnInit {
   @Input() elDate: Date = new Date();
   constructor(private el: ElementRef) {}
 
-  ngAfterContentInit(): void {
+  ngOnInit(): void {
     const now = new Date();
     const nowMs = now.getTime();
-
     this.elDate = new Date(this.elDate);
 
     const elTimeMs = this.elDate.getTime();
 
     if (elTimeMs > nowMs) {
-      this.el.nativeElement.classList.add('text-red-500');
+      this.el.nativeElement.classList = 'text-red-500';
     }
   }
-
-  ngOnInit(): void {}
 }

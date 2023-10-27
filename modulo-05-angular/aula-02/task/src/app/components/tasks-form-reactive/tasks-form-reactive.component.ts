@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Task } from 'src/app/models/task.model';
+import { generateRandomId } from 'src/helpers/generate-random-id';
 
 @Component({
   selector: 'app-tasks-form-reactive',
@@ -63,7 +64,7 @@ export class TasksFormReactiveComponent {
       return;
     }
 
-    this.addTask.emit({ ...this.formTask.value });
+    this.addTask.emit({ ...this.formTask.value, id: generateRandomId() });
     this.formTask.reset();
   }
 }

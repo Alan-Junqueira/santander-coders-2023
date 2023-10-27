@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ITask } from 'src/app/app.component';
 import { Task } from 'src/app/models/task.model';
+import { generateRandomId } from 'src/helpers/generate-random-id';
 
 @Component({
   selector: 'app-task-form',
@@ -14,7 +15,7 @@ export class TaskFormComponent {
 
   @Output() addTask = new EventEmitter();
 
-  public newTask: Task = new Task('', '', new Date(), 'todo', []);
+  public newTask: Task = new Task('', '', new Date(), 'todo', [], '');
 
   submitTask(form: NgForm) {
     const formControls = form.controls;
@@ -46,6 +47,6 @@ export class TaskFormComponent {
 
     console.log(this.formErr);
 
-    this.addTask.emit({ ...this.newTask });
+    this.addTask.emit({ ...this.newTask, id: generateRandomId() });
   }
 }

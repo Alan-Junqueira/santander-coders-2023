@@ -18,6 +18,11 @@
       <app-tasks-table [tasks]="chosenTasks"></app-tasks-table>
     </div>
     <app-tasks-kambam [tasks]="listTask"></app-tasks-kambam>
-    <app-task-list-updated [tasks]="listTask" (updateTask)="onUpdateTask($event)"></app-task-list-updated>
+    <app-task-list-updated
+      (updateTask)="onUpdateTask($event)"
+      [todoTasks]="todoTasks()"
+      [inProgressTasks]="inProgressTasks()"
+      [doneTasks]="doneTasks()"
+    ></app-task-list-updated>
   </div>
 </div>
