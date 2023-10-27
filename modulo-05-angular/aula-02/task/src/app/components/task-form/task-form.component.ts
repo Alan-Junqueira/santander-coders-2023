@@ -14,7 +14,7 @@ export class TaskFormComponent {
 
   @Output() addTask = new EventEmitter();
 
-  public newTask: Task = new Task('', '', new Date(), 'todo');
+  public newTask: Task = new Task('', '', new Date(), 'todo', []);
 
   submitTask(form: NgForm) {
     const formControls = form.controls;
@@ -26,7 +26,7 @@ export class TaskFormComponent {
 
     this.formErr = {};
 
-    console.log(form.controls['title']?.errors)
+    console.log(form.controls['title']?.errors);
 
     if (isTitleInvalid) {
       this.formErr['title'] = 'Title is required';

@@ -10,6 +10,9 @@ import { TasksFilterComponent } from './tasks-filter/tasks-filter.component';
 import { TasksKambamComponent } from './tasks-kambam/tasks-kambam.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TasksFormReactiveComponent } from './tasks-form-reactive/tasks-form-reactive.component';
+import { TaskCardComponent } from './task-card/task-card.component';
+import { TaskListUpdatedComponent } from './task-list-updated/task-list-updated.component';
+import { TaskStatusComponent } from './task-status/task-status.component';
 
 @NgModule({
   imports: [CommonModule, DirectivesModule, FormsModule, ReactiveFormsModule],
@@ -21,6 +24,9 @@ import { TasksFormReactiveComponent } from './tasks-form-reactive/tasks-form-rea
     TasksFilterComponent,
     TasksKambamComponent,
     TasksFormReactiveComponent,
+    TaskCardComponent,
+    TaskListUpdatedComponent,
+    TaskStatusComponent,
   ],
   exports: [
     TaskFormComponent,
@@ -28,7 +34,8 @@ import { TasksFormReactiveComponent } from './tasks-form-reactive/tasks-form-rea
     TaskDetailsComponent,
     TasksTableComponent,
     TasksKambamComponent,
-    TasksFormReactiveComponent
+    TasksFormReactiveComponent,
+    TaskListUpdatedComponent,
   ],
 })
 export class ComponentsModule {}

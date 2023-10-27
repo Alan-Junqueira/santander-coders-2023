@@ -26,9 +26,31 @@ export class AppComponent {
   onChoseTask(task: Task | null) {
     if (task) {
       this.chosenTasks.push(task);
-      this.chosenTask = new Task(task.title, task.description, task.date, task.status);
+      this.chosenTask = new Task(
+        task.title,
+        task.description,
+        task.date,
+        task.status,
+        task.tags
+      );
     } else {
       this.chosenTask = null;
     }
+  }
+
+  onUpdateTask({ index, ...task }: Task & { index: number }) {
+    this.listTask.splice(index, 1, task);
+  }
+
+  todoTasks() {
+    return this.listTask.filter((task) => task.status === 'todo');
+  }
+
+  inProgressTasks() {
+    return this.listTask.filter((task) => task.status === 'inProgress');
+  }
+
+  doneTasks() {
+    return this.listTask.filter((task) => task.status === 'done');
   }
 }

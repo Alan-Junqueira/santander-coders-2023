@@ -1,0 +1,13 @@
+<div>
+  <div class="py-4 border-t border-t-neutral-50">
+    <h2 class="line-clamp-1 text-neutral-100 text-center mb-4 uppercase text-xl">
+      Task list with update active
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4">
+    <ng-container *ngFor="let task of tasks; let i = index">
+      <app-task-card [task]="task" [index]="i"></app-task-card>
+    </ng-container>
+  </div>
+</div>

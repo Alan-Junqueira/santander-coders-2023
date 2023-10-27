@@ -5,6 +5,7 @@ export interface IClass {
   description: string;
   date: Date;
   status: TStatus;
+  tags: string[];
 }
 
 export class Task {
@@ -12,6 +13,7 @@ export class Task {
     public title: string,
     public description: string,
     public date: Date,
-    public status: TStatus
+    public status: TStatus,
+    public tags: string[]
   ) {}
 }
