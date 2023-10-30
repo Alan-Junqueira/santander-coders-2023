@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Task } from 'src/app/models/task.model';
 
@@ -7,7 +7,7 @@ import { Task } from 'src/app/models/task.model';
   templateUrl: './task-update-modal.component.html',
   styleUrls: ['./task-update-modal.component.scss'],
 })
-export class TaskUpdateModalComponent {
+export class TaskUpdateModalComponent implements OnInit{
   @Input() task: Task = {} as Task;
   @Input() index: number = 0;
 
@@ -52,8 +52,9 @@ export class TaskUpdateModalComponent {
     this.tags.removeAt(index);
   }
 
-  onModuleInit() {
+  ngOnInit() {
     console.log(this.task);
+    this.task.tags.forEach((tag) => this.addTag(tag));
     this.taskToUpdate.patchValue(this.task);
   }
 }
