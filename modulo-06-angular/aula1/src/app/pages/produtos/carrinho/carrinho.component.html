@@ -1,14 +1,114 @@
-MEU CARRINHO
-<div *ngIf="carrinho.length === 0" class="carrinho--vazio">
-  Nenhum item no carrinho
-</div>
-<div *ngIf="carrinho.length > 0" class="carrinho">
-  <div class="carrinho__item" *ngFor="let item of carrinho">
-    <span class="carrinho__item__id">{{ item.productId }}</span>
-    <span class="carrinho__item__qtd">{{ item.quantity }}</span>
-    <div class="carrinho__item__acoes">
-        <button class="carrinho__item__acoes__botao" (click)="decrementar(item.productId)">-</button>
-        <button class="carrinho__item__acoes__botao" (click)="incrementar(item.productId)">+</button>
+<div>
+  <div *ngIf="carrinho.length === 0" class="carrinho--vazio">
+    Nenhum item no carrinho
+  </div>
+  <button class="carrinho__button__open-modal" (click)="openCardModal()">
+    <ng-icon name="heroShoppingCartSolid"></ng-icon>
+  </button>
+  <div class="carrinho__modal" id="cartModal">
+    <div class="carrinho__modal__overlay" (click)="closeCardModal()"></div>
+    <div class="carrinho__modal__items">
+      <h1 class="carrinho__modal__items__titulo">MEU CARRINHO</h1>
+      <button class="carrinho__button__close-modal" (click)="closeCardModal()">
+        <ng-icon name="heroXMarkSolid"></ng-icon>
+      </button>
+      <div class="carrinho__modal__items__container">
+        <div
+          class="carrinho__modal__items__item"
+          *ngFor="let cartItem of carrinho"
+        >
+          <img
+            [src]="getItemById(cartItem.productId)?.image"
+            alt=""
+            class="carrinho__modal__items__item__imagem"
+          />
+          <span class="carrinho__modal__items__item__nome">
+            {{ getItemById(cartItem.productId)?.name }}
+          </span>
+          <span class="carrinho__modal__items__item__qtd">
+            {{ cartItem.quantity }}
+          </span>
+          <span class="carrinho__modal__items__item__price">
+            {{ getItemById(cartItem.productId)?.price | currency }}
+          </span>
+          <div class="carrinho__modal__items__item__acoes">
+            <button
+              class="carrinho__modal__items__item__acoes__botao"
+              (click)="decrementar(cartItem.productId)"
+            >
+              -
+            </button>
+            <button
+              class="carrinho__modal__items__item__acoes__botao"
+              (click)="incrementar(cartItem.productId)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="carrinho__modal__items__total">
+        <h3>Total: {{ getTotal() | currency }}</h3>
+      </div>
+      <form
+        (ngSubmit)="submitCart()"
+        [formGroup]="formCart"
+        class="carrinho__modal__form"
+      >
+        <div class="carrinho__modal__form__input-label">
+          <label class="carrinho__modal__form__label" for="name">Nome</label>
+          <input
+            class="carrinho__modal__form__input"
+            id="name"
+            type="text"
+            name="name"
+            formControlName="name"
+          />
+          <span
+            class="carrinho__modal__form__error"
+            *ngIf="
+              formCart.controls['name'].errors &&
+              formCart.controls['name'].touched
+            "
+            textError
+          >
+            {{
+              formCart.controls["name"].errors["required"] &&
+                "Nome é obrigatório"
+            }}
+          </span>
+        </div>
+        <div class="carrinho__modal__form__input-label">
+          <label class="carrinho__modal__form__label" for="address"
+            >Endereço</label
+          >
+          <input
+            class="carrinho__modal__form__input"
+            id="address"
+            type="text"
+            name="address"
+            formControlName="address"
+          />
+          <span
+            class="carrinho__modal__form__error"
+            *ngIf="
+              formCart.controls['address'].errors &&
+              formCart.controls['address'].touched
+            "
+            textError
+          >
+            {{
+              formCart.controls["address"].errors["required"] &&
+                "Endereço é obrigatório"
+            }}
+          </span>
+        </div>
+        <div class="carrinho__modal__form__acoes">
+          <button type="button" (click)="closeCardModal()">Cancelar</button>
+          <button (click)="submitCart()">Realizar Pedido</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
