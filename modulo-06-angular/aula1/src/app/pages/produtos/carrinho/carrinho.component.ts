@@ -3,6 +3,7 @@ import {
   EventEmitter,
   HostListener,
   Input,
+  OnInit,
   Output,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +15,7 @@ import { ItemPedidoType } from 'src/types/pedidoType';
   templateUrl: './carrinho.component.html',
   styleUrls: ['./carrinho.component.scss'],
 })
-export class CarrinhoComponent {
+export class CarrinhoComponent implements OnInit{
   isModalOpen = false;
 
 
@@ -30,12 +31,15 @@ export class CarrinhoComponent {
     }
   }
 
-  formCart: FormGroup = this.fb.group({
-    name: ['', [Validators.required]],
-    address: ['', [Validators.required]],
-  });
+  formCart!: FormGroup
 
   constructor(private fb: FormBuilder) {}
+  ngOnInit(): void {
+    this.formCart = this.fb.group({
+      name: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+    });
+  }
 
 
   submitCart() {
