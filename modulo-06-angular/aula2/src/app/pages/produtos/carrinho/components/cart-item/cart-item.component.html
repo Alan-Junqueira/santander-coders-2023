@@ -1,0 +1,10 @@
+<div class="carrinho__lista__item" *ngIf="item">
+  <img [src]="item.image" />
+  <span class="carrinho__lista__item__name">{{ item.name }}</span>
+  <span>$ {{ item.price }}</span>
+  <span>qtd {{ quantity }}</span>
+  <div class="carrinho__lista__item__acoes">
+    <p-button (click)="decrementar(item.id)">-</p-button>
+    <p-button (click)="incrementar(item.id)">+</p-button>
+  </div>
+</div>

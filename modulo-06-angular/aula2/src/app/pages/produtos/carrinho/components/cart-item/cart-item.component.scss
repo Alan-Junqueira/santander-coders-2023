@@ -1,0 +1,18 @@
+.carrinho__lista__item {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  &__name {
+    flex: 1;
+  };
+  &__acoes{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  };
+  img {
+    width: 10%;
+    aspect-ratio: 1/1;
+  }
+}

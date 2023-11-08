@@ -21,16 +21,14 @@
       Não há itens no carrinho
     </div>
     <div class="carrinho__lista" *ngIf="carrinho.length > 0">
-      <div class="carrinho__lista__item" *ngFor="let item of carrinho">
-        <img [src]="getItemLojaBy(item.productId)?.image" />
-        <span>{{ getItemLojaBy(item.productId)?.name }}</span>
-        <span>qtd {{ item.quantity }}</span>
-        <span>$ {{ getItemLojaBy(item.productId)?.price }}</span>
-        <div class="carrinho__lista__item__acoes">
-          <p-button (click)="decrementar(item.productId)">-</p-button>
-          <p-button (click)="incrementar(item.productId)">+</p-button>
-        </div>
-      </div>
+      <ng-container *ngFor="let item of carrinho">
+        <app-cart-item
+          [item]="getItemLojaBy(item.productId)"
+          [quantity]="item.quantity"
+          (decrementarItem)="decrementar($event)"
+          (incrementarItem)="incrementar($event)"
+        ></app-cart-item>
+      </ng-container>
     </div>
   </p-fieldset>
 
@@ -45,6 +43,7 @@
         <input
           id="input_username"
           type="text"
+          pInputText
           placeholder="Informe seu nome"
           formControlName="username"
           [ngClass]="{ input_error: !verificarSeEhValido('username') }"
@@ -62,6 +61,7 @@
         <input
           id="input_delivery"
           type="text"
+          pInputText
           placeholder="Informe seu endereço"
           formControlName="delivery"
           [ngClass]="{ input_error: !verificarSeEhValido('delivery') }"
