@@ -10,17 +10,22 @@
     <img class="item-card__imagem" [src]="item.image" />
   </ng-template>
 
-  <span class="item-card__nome">{{ item.name }}</span>
-  <span class="item-card__descricao">{{ item.description }}</span>
-  <span class="item-card__preco">{{ item.price }}</span>
-  <span class="item-card__pontuacao">{{ item.rating }}</span>
-  <div class="item-card__acoes">
-    <button
+  <div class="item-card__details">
+    <span class="item-card__descricao">{{ item.description }}</span>
+    <span class="item-card__preco"
+      >Preço: <strong>$ {{ item.price }}</strong>
+    </span>
+    <span class="item-card__pontuacao"
+      >Avaliação: <strong>{{ item.rating }}/5</strong>
+    </span>
+  </div>
+  <ng-template pTemplate="footer" class="item-card__acoes">
+    <p-button
       class="item-card__acoes__adicionar"
       (click)="adicionar()"
       [disabled]="!item.isAvailable"
+      [label]="item.isAvailable ? 'ADICIONAR' : 'FORA DE ESTOQUE'"
     >
-      {{ item.isAvailable ? "ADICIONAR" : "FORA DE ESTOQUE" }}
-    </button>
-  </div>
+    </p-button>
+  </ng-template>
 </p-card>
