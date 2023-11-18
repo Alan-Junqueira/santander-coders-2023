@@ -15,17 +15,16 @@ export let AppInjector: Injector;
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    
+
     AppRoutingModule,
 
     ProdutosModule,
     NotFoundModule,
-    LoginModule
+    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {
   constructor(private injector: Injector) {
     AppInjector = this.injector;

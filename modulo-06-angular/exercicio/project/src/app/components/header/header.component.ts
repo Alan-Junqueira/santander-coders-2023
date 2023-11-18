@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
+  // pathName = window.location.pathname;
+  // actualPage = this.pathName.split('/')[1];
 }

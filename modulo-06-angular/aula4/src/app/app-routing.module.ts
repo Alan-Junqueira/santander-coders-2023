@@ -6,16 +6,14 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('./pages/login/login.module').then(
-        (m) => m.LoginModule
-      ),
-      canActivate: [loginGuard],
+      import('./pages/login/login.module').then((m) => m.LoginModule),
+    canActivate: [loginGuard],
   },
   {
     path: 'produtos',
     loadChildren: () =>
       import('./pages/produtos/produtos.module').then((m) => m.ProdutosModule),
-      canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'not-found',
