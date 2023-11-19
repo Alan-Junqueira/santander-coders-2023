@@ -1,0 +1,39 @@
+<div
+  class="flex flex-col bg-amber-500 rounded-md ring-2 hover:ring-gray-200 ring-offset-2 hover:ring-offset-transparent ring-offset-transparent ring-transparent"
+>
+  <div class="overflow-hidden rounded-t-md relative group">
+    <span
+      class="absolute top-2 right-2 rounded-md px-2 py-1 text-white text-sm font-bold z-10"
+      [ngClass]="{
+        'bg-green-500': character.status === 'Alive',
+        'bg-red-500': character.status === 'Dead',
+        'bg-blue-500': character.status === 'unknown'
+      }"
+    >
+      {{
+        character.status === "Alive"
+          ? "Vivo"
+          : character.status === "unknown"
+          ? "Desconhecido"
+          : "Morto"
+      }}
+    </span>
+    <a
+      class="text-white text-xl font-bold z-20 bg-black/80 absolute inset-0 hidden group-hover:flex items-center justify-center"
+      [routerLink]="['/character', character.id]"
+    >
+      Ver mais
+    </a>
+    <img
+      [src]="character.image"
+      [alt]="character.name"
+      class="object-cover w-full aspect-square"
+    />
+  </div>
+  <h3>
+    {{ character.name }}
+  </h3>
+  <span class="text-neutral-50 text-sm">
+    <strong class="text-base">Especie:</strong> {{ character.species }}
+  </span>
+</div>
