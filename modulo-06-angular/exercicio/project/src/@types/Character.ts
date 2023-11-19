@@ -9,7 +9,7 @@ export interface ICharacter {
   species: string;
   type: TCharacterType;
   gender: TCharacterGender;
-  origin: ICharacterLocation;
+  origin: ICharacterLocation; 
   location: ICharacterLocation;
   image: string;
   episode: string[];
