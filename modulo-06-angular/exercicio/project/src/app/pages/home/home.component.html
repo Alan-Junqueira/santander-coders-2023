@@ -1,9 +1,16 @@
-<ng-container *ngIf="characters.length > 0">
-  <div class="flex justify-center">
-    <div class="grid grid-cols-4 gap-4 max-w-[90rem] w-full px-4">
-      <ng-container *ngFor="let character of characters">
-        <home-card [character]="character"></home-card>
-      </ng-container>
+<div class="flex justify-center">
+  <div class="py-10 flex flex-col gap-8 max-w-[90rem]">
+    <div class="flex gap-4 items-center justify-center">
+      <h1 class="text-3xl text-neutral-50 whitespace-nowrap">Lista de personagens do</h1>
+      <img src="../../../assets/images/rick-and-morty.png" alt="rick and morty" class="w-48">
     </div>
+
+    <ng-container *ngIf="characters.length > 0">
+      <div class="grid grid-cols-4 gap-4 w-full px-4">
+        <ng-container *ngFor="let character of characters">
+          <home-card [character]="character"></home-card>
+        </ng-container>
+      </div>
+    </ng-container>
   </div>
-</ng-container>
+</div>

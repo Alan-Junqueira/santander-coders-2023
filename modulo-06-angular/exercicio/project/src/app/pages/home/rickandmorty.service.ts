@@ -15,7 +15,7 @@ interface IGetCharactersSearchParams {
   page?: number;
   name?: string;
   species?: string;
-  [key: string]: string | number | boolean | undefined
+  [key: string]: string | number | boolean | undefined;
 }
 
 @Injectable({
@@ -35,17 +35,20 @@ export class RickAndMortyService {
     console.log(this.weatherApiKey);
   }
 
-  getCharacters(searchParams?: IGetCharactersSearchParams): Observable<IDefaultRickAndMortyApiReturn<ICharacter>> {
-    let params = new HttpParams()
+  getCharacters(
+    searchParams?: IGetCharactersSearchParams
+  ): Observable<IDefaultRickAndMortyApiReturn<ICharacter>> {
+    let params = new HttpParams();
 
-    if(searchParams){
+    if (searchParams) {
       Object.keys(searchParams).map((key: string) => {
         params = params.append(key, String(searchParams[key]));
       });
     }
 
     return this._http.get<IDefaultRickAndMortyApiReturn<ICharacter>>(
-      `${this.baseUrl}${this.apiPaths.character}`
+      `${this.baseUrl}${this.apiPaths.character}`,
+      { params }
     );
   }
 }
