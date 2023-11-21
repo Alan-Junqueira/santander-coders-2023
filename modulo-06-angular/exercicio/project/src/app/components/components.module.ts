@@ -13,6 +13,7 @@ import {
   tablerBrandTwitterFilled,
   tablerBrandFacebookFilled,
 } from '@ng-icons/tabler-icons';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [FooterComponent, HeaderComponent],
@@ -27,6 +28,7 @@ import {
       tablerBrandTwitterFilled,
       tablerBrandFacebookFilled,
     }),
+    AppRoutingModule,
   ],
 })
 export class ComponentsModule {}

@@ -53,4 +53,4 @@ export class RickAndMortyService {
   }
 }
 
-// http://api.weatherstack.com/forecast?access_key=3751468effba142d3034bd1db4c6d855&query=Caldas%20Novas&hourly=1
+// https://rickandmortyapi.com/documentation/
