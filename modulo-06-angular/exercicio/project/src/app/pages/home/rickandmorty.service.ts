@@ -22,7 +22,6 @@ interface IGetCharactersSearchParams {
   providedIn: 'root',
 })
 export class RickAndMortyService {
-  private weatherApiKey: string = '';
   private baseUrl: string = 'https://rickandmortyapi.com/api';
   private apiPaths = {
     character: '/character',
@@ -30,10 +29,7 @@ export class RickAndMortyService {
     episode: '/episode',
   };
 
-  constructor(private _http: HttpClient) {
-    this.weatherApiKey = environment.WEATHER_API_KEY;
-    console.log(this.weatherApiKey);
-  }
+  constructor(private _http: HttpClient) {}
 
   getCharacters(
     searchParams?: IGetCharactersSearchParams
