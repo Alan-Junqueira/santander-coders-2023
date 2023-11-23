@@ -1,1 +1,62 @@
-<p>character works!</p>
+<div class="flex justify-center">
+  <div class="py-10 flex flex-col gap-8 max-w-[90rem] w-full px-4">
+    <h1 class="text-center text-4xl font-bold text-neutral-200">
+      {{ character.name }}
+    </h1>
+    <div class="mt-10 grid grid-cols-3 gap-8">
+      <div class="col-span-1 rounded-md overflow-hidden bg-red-500">
+        <img [src]="character.image" alt="" class="object-cover w-full" />
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <div class="flex flex-col">
+          <span class="text-neutral-50 text-sm">
+            <strong class="text-base">Status: </strong>
+            <span
+              class="rounded-md px-2 py-1 text-white text-sm font-bold z-10 w-fit"
+              [ngClass]="{
+                'bg-green-500': character.status === 'Alive',
+                'bg-red-500': character.status === 'Dead',
+                'bg-blue-500': character.status === 'unknown'
+              }"
+            >
+              {{ status[character.status] }}
+            </span>
+          </span>
+          <span class="text-neutral-50 text-sm">
+            <strong class="text-base">Especie:</strong> {{ character.species }}
+          </span>
+          <span class="text-neutral-50 text-sm">
+            <strong class="text-base">Tipo:</strong>
+            {{ character.type || "Desconhecido" }}
+          </span>
+          <span class="text-neutral-50 text-sm">
+            <strong class="text-base">Gênero:</strong>
+            {{ gender[character.gender] }}
+          </span>
+          <span class="text-neutral-50 text-sm">
+            <strong class="text-base">Origem:</strong>
+            {{
+              character.origin.name === "unknown"
+                ? "Desconhecida"
+                : character.origin.name
+            }}
+          </span>
+          <span class="text-neutral-50 text-sm">
+            <strong class="text-base">Localização:</strong>
+            {{
+              character.origin.name === "unknown"
+                ? "Desconhecida"
+                : character.location.name
+            }}
+          </span>
+          <span class="text-neutral-50 text-sm">
+            Participou de
+            <strong class="text-base">{{ character.episode.length }}</strong>
+            {{ character.episode.length === 1 ? "episódio" : "episódios" }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

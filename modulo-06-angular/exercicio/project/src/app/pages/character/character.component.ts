@@ -14,6 +14,19 @@ export class CharacterComponent {
   public isLoadingCharacter: boolean = false;
   public errorLoadingCharacter: boolean = false;
 
+  public gender = {
+    Male: 'Masculino',
+    Female: "Feminino",
+    Genderless: "Sem gênero",
+    unknown: "Desconhecido",
+  }
+
+  public status = {
+    Alive: "Vivo",
+    Dead: "Morto",
+    unknown: "Desconhecido",
+  }
+
   constructor(
     private route: ActivatedRoute,
     private characterService: CharacterService

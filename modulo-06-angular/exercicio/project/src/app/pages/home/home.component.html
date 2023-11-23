@@ -1,5 +1,5 @@
 <div class="flex justify-center">
-  <div class="py-10 flex flex-col gap-8 max-w-[90rem]">
+  <div class="py-10 flex flex-col gap-8 max-w-[90rem] w-full">
     <div class="flex gap-4 items-center justify-center">
       <h1 class="text-3xl text-neutral-50 whitespace-nowrap">
         Lista de personagens do
@@ -15,22 +15,18 @@
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4"
       *ngIf="isLoadingCharacters; else charactersLoaded"
     >
-      <div class="w-full bg-gradient-to-tr from-gray-300 to-gray-200 animate-pulse h-80 rounded-md">
-        <p class="text-transparent select-none">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-          omnis, magnam tenetur aliquam commodi modi possimus tempora neque illo
-          officia deserunt, vel porro iste quidem voluptatibus. Ullam facilis
-          quibusdam deleniti?
-        </p>
-      </div>
       <div
-        *ngFor="let i of [].constructor(19); let j = index"
-        class="w-full bg-gradient-to-tr from-gray-300 to-gray-200 animate-pulse h-80 rounded-md"
-      ></div>
+        *ngFor="let i of [].constructor(20)"
+        class="w-full bg-gradient-to-tr from-gray-300 to-gray-200 animate-pulse h-[65vh] rounded-md relative"
+      >
+      <div class="h-4/6 bg-gradient-to-bl from-lime-300 via-emerald-300 via-20% to-lime-400"></div>
+    </div>
     </div>
 
     <ng-template #charactersLoaded>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full px-4">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full px-4"
+      >
         <ng-container *ngFor="let character of characters">
           <home-card [character]="character"></home-card>
         </ng-container>
