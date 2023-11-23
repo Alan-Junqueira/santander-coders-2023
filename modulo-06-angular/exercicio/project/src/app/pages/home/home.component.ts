@@ -21,10 +21,10 @@ export class HomeComponent implements OnInit {
       next: (data: IDefaultRickAndMortyApiReturn<ICharacter>) => {
         this.characters = data.results;
 
-        this.isLoadingCharacters = true;
+        this.isLoadingCharacters = false;
       },
       error: () => {
-        this.isLoadingCharacters = true;
+        this.isLoadingCharacters = false;
         this.errorLoadingCharacters = true;
       },
       complete: () => {},
