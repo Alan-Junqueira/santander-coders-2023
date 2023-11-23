@@ -1,11 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  pathName = window.location.pathname;
-  actualPage = this.pathName.split('/')[1];
+  public paths = [
+    {
+      name: 'Personagens',
+      path: '/personagens',
+    },
+    {
+      name: 'Localizações',
+      path: '/localizacoes',
+    },
+    {
+      name: 'Episódios',
+      path: '/episodios',
+    },
+  ];
 }

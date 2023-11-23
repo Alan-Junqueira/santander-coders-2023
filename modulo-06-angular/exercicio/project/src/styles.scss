@@ -7,7 +7,7 @@
 }
 
 ::selection {
-  background-color: rgb(162, 28, 175);
+  background-color: rgb(16, 185, 129);
   color: rgb(229, 231, 235);
 }
 
@@ -17,11 +17,11 @@
 
 *::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: rgb(162, 28, 175);
-  border-left: 2px solid #4a044e;
-  border-right: 2px solid #4a044e;
+  background: rgb(16, 185, 129);
+  border-left: 2px solid rgb(167, 243, 208);
+  border-right: 2px solid rgb(167, 243, 208);
 }
 
 *::-webkit-scrollbar-track {
-  background: #4a044e;
+  background: rgb(167, 243, 208);
 }

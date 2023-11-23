@@ -4,82 +4,35 @@
   </p>
   <div class="flex items-center justify-center gap-4 max-w-[90rem] w-full">
     <div
-      class="w-full h-1 bg-gradient-to-br from-fuchsia-700 to-pink-500 rounded-r-lg animate-pulse"
+      class="w-full h-1 bg-gradient-to-br from-emerald-700 to-lime-500 rounded-r-lg animate-pulse"
     ></div>
     <a
-      href="https://www.linkedin.com/in/alan-junqueira/"
+      *ngFor="let social of socials; let index = index"
+      [href]="social.link"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-1 text-xs text-gray-200 hover:text-blue-600 group transition-all ease-in duration-200"
+      class="flex items-center gap-1 text-xs group transition-all ease-in duration-200 text-gray-200"
+      [ngClass]="{
+        'hover:text-blue-600': (social.slug === 'linkedin' || social.slug === 'facebook' || social.slug === 'twitter'),
+        'hover:text-rose-500': social.slug === 'instagram',
+        'hover:text-neutral-400': social.slug === 'github',
+        'hover:text-emerald-600': social.slug === 'whatsApp',
+      }"
     >
-      <span class="hidden md:block"> Linkedin </span>
+      <span class="hidden md:block"> {{ social.name }} </span>
       <ng-icon
-        name="{{ logos.linkedin }}"
+        [name]="social.icon"
         class="md:opacity-0 md:group-hover:opacity-100 text-lg md:text-xs transition-all ease-in duration-200 text-gray-200 group-hover:text-blue-600"
-      ></ng-icon>
-    </a>
-    <a
-      href="https://www.instagram.com/_alanjunqueira/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center gap-1 text-xs text-gray-200 hover:text-rose-500 group transition-all ease-in duration-200"
-    >
-      <span class="hidden md:block"> Instagram </span>
-      <ng-icon
-        name="{{ logos.instagram }}"
-        class="md:opacity-0 md:group-hover:opacity-100 text-lg md:text-xs transition-all ease-in duration-200 text-gray-200 group-hover:text-rose-500"
-      ></ng-icon>
-    </a>
-    <a
-      href="https://www.instagram.com/_alanjunqueira/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center gap-1 text-xs text-gray-200 hover:text-neutral-400 group transition-all ease-in duration-200"
-    >
-      <span class="hidden md:block"> Github </span>
-      <ng-icon
-        name="{{ logos.github }}"
-        class="md:opacity-0 md:group-hover:opacity-100 text-lg md:text-xs transition-all ease-in duration-200 text-gray-200 group-hover:text-neutral-400"
-      ></ng-icon>
-    </a>
-    <a
-      href="https://wa.me/64992391327"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center gap-1 text-xs text-gray-200 hover:text-emerald-600 group transition-all ease-in duration-200"
-    >
-      <span class="hidden md:block"> Whatsapp </span>
-      <ng-icon
-        name="{{ logos.whatsApp }}"
-        class="md:opacity-0 md:group-hover:opacity-100 text-lg md:text-xs transition-all ease-in duration-200 text-gray-200 group-hover:text-emerald-600"
-      ></ng-icon>
-    </a>
-    <a
-      href="https://twitter.com/_alanjunqueira"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center gap-1 text-xs text-gray-200 hover:text-blue-600 group transition-all ease-in duration-200"
-    >
-      <span class="hidden md:block"> Twitter </span>
-      <ng-icon
-        name="{{ logos.twitter }}"
-        class="md:opacity-0 md:group-hover:opacity-100 text-lg md:text-xs transition-all ease-in duration-200 text-gray-200 group-hover:text-blue-600"
-      ></ng-icon>
-    </a>
-    <a
-      href="https://twitter.com/_alanjunqueira"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center gap-1 text-xs text-gray-200 hover:text-blue-600 group transition-all ease-in duration-200"
-    >
-      <span class="hidden md:block"> Facebook </span>
-      <ng-icon
-        name="{{ logos.facebook }}"
-        class="md:opacity-0 md:group-hover:opacity-100 text-lg md:text-xs transition-all ease-in duration-200 text-gray-200 group-hover:text-blue-600"
+        [ngClass]="{
+          'group-hover:text-blue-600': (social.slug === 'linkedin' || social.slug === 'facebook' || social.slug === 'twitter'),
+          'group-hover:text-rose-500': social.slug === 'instagram',
+          'group-hover:text-neutral-400': social.slug === 'github',
+          'group-hover:text-emerald-600': social.slug === 'whatsApp',
+        }"
       ></ng-icon>
     </a>
     <div
-      class="w-full h-1 bg-gradient-to-br from-fuchsia-700 to-pink-500 rounded-l-lg animate-pulse"
+      class="w-full h-1 bg-gradient-to-br from-emerald-700 to-lime-500 rounded-l-lg animate-pulse"
     ></div>
   </div>
 </footer>
