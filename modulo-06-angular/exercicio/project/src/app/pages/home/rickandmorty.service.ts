@@ -35,7 +35,6 @@ export class RickAndMortyService {
     searchParams?: IGetCharactersSearchParams
   ): Observable<IDefaultRickAndMortyApiReturn<ICharacter>> {
     let params = new HttpParams();
-
     if (searchParams) {
       Object.keys(searchParams).map((key: string) => {
         params = params.append(key, String(searchParams[key]));
